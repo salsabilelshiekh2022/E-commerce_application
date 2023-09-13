@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:ecommerce/views/register/cubit.dart';
 import 'package:ecommerce/widgets/app_text_form_field.dart';
+import 'package:ecommerce/widgets/loading_button.dart';
 import 'package:ecommerce/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
 
@@ -71,11 +72,30 @@ class RegisterView extends StatelessWidget {
                         textInputAction: TextInputAction.next,
                         onEditingComplete: () {
                           FocusScope.of(context)
-                              .requestFocus(cubit.passwordFocusNode);
+                              .requestFocus(cubit.phoneFocuseNode);
                         },
                         hintText: 'Email',
                         validator: (value) {
                           return Validator.validateEmail(value);
+                        },
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      AppTextFormField(
+                        onSave: (data) {
+                          cubit.phone = data;
+                        },
+                        controller: cubit.phoneController,
+                        focusNode: cubit.phoneFocuseNode,
+                        textInputAction: TextInputAction.next,
+                        onEditingComplete: () {
+                          FocusScope.of(context)
+                              .requestFocus(cubit.passwordFocusNode);
+                        },
+                        hintText: 'Phone',
+                        validator: (value) {
+                          return Validator.validatePhone(value);
                         },
                       ),
                       const SizedBox(
@@ -112,7 +132,18 @@ class RegisterView extends StatelessWidget {
                       SizedBox(
                         height: height * .034482,
                       ),
-                      AppButton(title: 'SIGNUP', onTap: () {}),
+                      BlocBuilder(
+                          bloc: cubit,
+                          builder: (context, state) {
+                            return state is RegisterLoading
+                                ? const LoadingButton()
+                                : AppButton(
+                                    title: 'SignUp',
+                                    onTap: () {
+                                      cubit.register();
+                                    },
+                                  );
+                          }),
                       SizedBox(
                         height: height * .085,
                       ),

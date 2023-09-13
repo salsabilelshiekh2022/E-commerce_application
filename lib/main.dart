@@ -2,6 +2,7 @@ import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/core/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart' as constants;
+import 'constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Ecommerce App',
+        debugShowCheckedModeBanner: false,
+        scaffoldMessengerKey: scaffoldKey,
         theme: ThemeData(
           fontFamily: "Metropolis",
           appBarTheme: const AppBarTheme(

@@ -18,3 +18,5 @@ double getWidth(BuildContext context) {
 
 const String registerUrl = 'https://student.valuxapps.com/api/register';
 const String loginUrl = 'https://student.valuxapps.com/api/login';
+
+final scaffoldKey = GlobalKey<ScaffoldMessengerState>();

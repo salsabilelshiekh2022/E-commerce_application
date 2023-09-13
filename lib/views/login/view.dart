@@ -9,6 +9,7 @@ import '../../constants.dart';
 import '../../core/router/routes.dart';
 import '../../core/validator/validator.dart';
 import '../../widgets/app_text_form_field.dart';
+import '../../widgets/loading_button.dart';
 import '../../widgets/social_media_button.dart';
 
 class LoginView extends StatelessWidget {
@@ -101,10 +102,18 @@ class LoginView extends StatelessWidget {
                       SizedBox(
                         height: height * .03448,
                       ),
-                      AppButton(
-                        title: 'LOGIN',
-                        onTap: () {},
-                      ),
+                      BlocBuilder(
+                          bloc: cubit,
+                          builder: (context, state) {
+                            return state is LoginLoading
+                                ? const LoadingButton()
+                                : AppButton(
+                                    title: 'LOGIN',
+                                    onTap: () {
+                                      cubit.login();
+                                    },
+                                  );
+                          }),
                       SizedBox(
                         height: height * .2339,
                       ),

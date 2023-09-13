@@ -3,7 +3,7 @@ class Validator {
     if (value!.isEmpty) {
       return "Field is required";
     } else if (!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-      return "Enter correct name";
+      return "Please enter correct name";
     } else {
       return null;
     }
@@ -11,7 +11,9 @@ class Validator {
 
   static String? validatePhone(String? value) {
     if (value!.isEmpty) {
-      return "Field is required";
+      return 'Field is required';
+    } else if (!RegExp(r'^01[0-2,5]{1}[0-9]{8}$').hasMatch(value)) {
+      return 'Please enter correct number ';
     }
     return null;
   }
@@ -20,7 +22,7 @@ class Validator {
     if (value!.isEmpty) {
       return "Field is required";
     } else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-      return "Enter correct email";
+      return "Please enter correct email";
     } else {
       return null;
     }
@@ -29,7 +31,7 @@ class Validator {
   static String? validatePassword(String? value) {
     if (value!.isEmpty) {
       return "Field is required";
-    } else if (value.length < 8) {
+    } else if (value.length < 6) {
       return "Password must be at least 8 characters";
     } else {
       return null;
