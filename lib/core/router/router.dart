@@ -3,6 +3,7 @@ import 'package:ecommerce/views/login/view.dart';
 import 'package:ecommerce/views/register/view.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../views/nav_bar/view.dart';
 import 'routes.dart';
 
 Route<dynamic> onGenerate(RouteSettings settings) {
@@ -16,6 +17,9 @@ Route<dynamic> onGenerate(RouteSettings settings) {
     case AppRoutes.forgetPasswordRoute:
       return CupertinoPageRoute(
           builder: (_) => const ForgetPasswordView(), settings: settings);
+    case AppRoutes.navBarRoute:
+      return CupertinoPageRoute(
+          builder: (_) => const NavBarView(), settings: settings);
 
     default:
       return CupertinoPageRoute(

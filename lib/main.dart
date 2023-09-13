@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         title: 'Ecommerce App',
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: scaffoldKey,
+        navigatorKey: navigatorKey,
         theme: ThemeData(
           fontFamily: "Metropolis",
           appBarTheme: const AppBarTheme(

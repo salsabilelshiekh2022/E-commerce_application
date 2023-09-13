@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../constants.dart';
 import '../../core/api_services/api_services.dart';
 import '../../core/models/user/user.dart';
+import '../../core/router/routes.dart';
 import '../../widgets/snak_bar.dart';
 
 part 'state.dart';
@@ -39,7 +40,8 @@ class RegisterCubit extends Cubit<RegisterState> {
         }, url: 'register');
         user = User.fromJson(response.data);
         if (user!.status!) {
-          showSnakBar(user!.message!, success);
+          //showSnakBar(user!.message!, success);
+          navigatorKey.currentState!.pushNamed(AppRoutes.navBarRoute);
         } else {
           showSnakBar(user!.message!, error);
         }
