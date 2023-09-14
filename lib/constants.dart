@@ -23,3 +23,5 @@ const String loginUrl = 'https://student.valuxapps.com/api/login';
 final GlobalKey<ScaffoldMessengerState> scaffoldKey =
     GlobalKey<ScaffoldMessengerState>();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+String? token;

@@ -1,11 +1,14 @@
+import 'package:ecommerce/core/app_storage/app_storage.dart';
 import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/core/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart' as constants;
 import 'constants.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+  await AppStorage.appInitialization();
+  token = AppStorage.getUser();
 }
 
 class MyApp extends StatelessWidget {
@@ -30,6 +33,8 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: constants.lightScaffoldBackgroundColor,
         ),
         onGenerateRoute: onGenerate,
-        initialRoute: AppRoutes.navBarRoute);
+        initialRoute: token != null || token != ""
+            ? AppRoutes.navBarRoute
+            : AppRoutes.registerPageRoute);
   }
 }

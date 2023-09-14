@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/api_services/api_services.dart';
+import 'package:ecommerce/core/app_storage/app_storage.dart';
 import 'package:ecommerce/core/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,10 @@ class LoginCubit extends Cubit<LoginState> {
         user = User.fromJson(response.data);
         if (user!.status!) {
           //showSnakBar(user!.message!, success);
-          navigatorKey.currentState!.pushNamed(AppRoutes.navBarRoute);
+
+          await AppStorage.cacheUser(user!.data!.token!);
+          navigatorKey.currentState!
+              .pushNamedAndRemoveUntil(AppRoutes.navBarRoute, (_) => false);
         } else {
           showSnakBar(user!.message!, error);
         }
