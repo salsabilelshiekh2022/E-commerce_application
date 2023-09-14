@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../constants.dart';
+import '../home/view.dart';
 
 class NavBarView extends StatefulWidget {
   const NavBarView({super.key});
@@ -15,7 +16,7 @@ class _NavBarViewState extends State<NavBarView> {
   final _controller = PersistentTabController();
   List<Widget> _buildScreens() {
     return [
-      Container(),
+      const HomeView(),
       Container(),
       Container(),
       Container(),

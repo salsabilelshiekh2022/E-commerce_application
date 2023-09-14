@@ -7,6 +7,7 @@ const grey = Color(0xff9B9B9B);
 const white = Color(0xffFFFFFF);
 const success = Color(0xff2AA952);
 const error = Color(0xffF01F0E);
+const yellow = Color(0xffFFBA49);
 
 double getHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;

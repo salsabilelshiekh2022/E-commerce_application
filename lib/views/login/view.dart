@@ -129,12 +129,12 @@ class LoginView extends StatelessWidget {
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SocialMediaButton(imagePath: AppAssets.googleAssets),
+                          SocialMediaButton(imagePath: AppAssets.googleAsset),
                           SizedBox(
                             width: 16,
                           ),
                           SocialMediaButton(
-                            imagePath: AppAssets.faceBookAssets,
+                            imagePath: AppAssets.faceBookAsset,
                           ),
                         ],
                       )

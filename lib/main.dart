@@ -30,6 +30,6 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: constants.lightScaffoldBackgroundColor,
         ),
         onGenerateRoute: onGenerate,
-        initialRoute: AppRoutes.registerPageRoute);
+        initialRoute: AppRoutes.navBarRoute);
   }
 }

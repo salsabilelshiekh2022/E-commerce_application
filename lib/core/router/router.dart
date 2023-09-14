@@ -20,6 +20,9 @@ Route<dynamic> onGenerate(RouteSettings settings) {
     case AppRoutes.navBarRoute:
       return CupertinoPageRoute(
           builder: (_) => const NavBarView(), settings: settings);
+    case AppRoutes.homePageRoute:
+      return CupertinoPageRoute(
+          builder: (_) => const NavBarView(), settings: settings);
 
     default:
       return CupertinoPageRoute(
