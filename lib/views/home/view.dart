@@ -30,8 +30,8 @@ class HomeView extends StatelessWidget {
                       Stack(
                         alignment: Alignment.bottomLeft,
                         children: [
-                          Image.asset(
-                            AppAssets.headerAsset,
+                          Image.network(
+                            'https://i.pinimg.com/564x/5d/47/39/5d4739321c109f2304db1db78f543547.jpg',
                             width: double.infinity,
                             height: height * .32,
                             fit: BoxFit.cover,

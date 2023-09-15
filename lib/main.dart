@@ -3,11 +3,17 @@ import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/core/router/routes.dart';
 import 'package:ecommerce/views/home/cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'constants.dart' as constants;
 import 'constants.dart';
 
 void main() async {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.blue, // navigation bar color
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ));
   runApp(const MyApp());
   await AppStorage.appInitialization();
   token = AppStorage.getUser();

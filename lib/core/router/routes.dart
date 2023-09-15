@@ -4,4 +4,5 @@ class AppRoutes {
   static const String forgetPasswordRoute = '/forgetPassword';
   static const String homePageRoute = '/home';
   static const String navBarRoute = '/navBar';
+  static const String productPageRoute = '/product';
 }

@@ -1,5 +1,6 @@
 import 'package:ecommerce/views/forget_password/view.dart';
 import 'package:ecommerce/views/login/view.dart';
+import 'package:ecommerce/views/product/view.dart';
 import 'package:ecommerce/views/register/view.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -23,6 +24,9 @@ Route<dynamic> onGenerate(RouteSettings settings) {
     case AppRoutes.homePageRoute:
       return CupertinoPageRoute(
           builder: (_) => const NavBarView(), settings: settings);
+    case AppRoutes.productPageRoute:
+      return CupertinoPageRoute(
+          builder: (_) => const ProductView(), settings: settings);
 
     default:
       return CupertinoPageRoute(
