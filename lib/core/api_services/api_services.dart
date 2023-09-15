@@ -27,4 +27,12 @@ class ApiService {
       data: data,
     );
   }
+
+  Future<Response> get(
+      {required String url, String lang = 'en', String? token}) async {
+    dio.options.headers = {'lang': lang, 'Authorization': token};
+    return await dio.get(
+      _baseUrl + url,
+    );
+  }
 }
