@@ -86,7 +86,7 @@ class Product extends Equatable {
   final String? image;
   final String? name;
   final String? description;
-  final List<String>? images;
+  final List<dynamic> images;
   final bool? inFavorites;
   final bool? inCart;
 
@@ -98,7 +98,7 @@ class Product extends Equatable {
     this.image,
     this.name,
     this.description,
-    this.images,
+    required this.images,
     this.inFavorites,
     this.inCart,
   });
@@ -111,7 +111,7 @@ class Product extends Equatable {
         image: json['image'] as String?,
         name: json['name'] as String?,
         description: json['description'] as String?,
-        images: json['images'] as List<String>?,
+        images: json['images'] as List<dynamic>,
         inFavorites: json['in_favorites'] as bool?,
         inCart: json['in_cart'] as bool?,
       );

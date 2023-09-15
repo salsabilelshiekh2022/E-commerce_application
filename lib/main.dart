@@ -1,7 +1,9 @@
 import 'package:ecommerce/core/app_storage/app_storage.dart';
 import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/core/router/routes.dart';
+import 'package:ecommerce/views/home/cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'constants.dart' as constants;
 import 'constants.dart';
 
@@ -17,24 +19,31 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Ecommerce App',
-        debugShowCheckedModeBanner: false,
-        scaffoldMessengerKey: scaffoldKey,
-        navigatorKey: navigatorKey,
-        theme: ThemeData(
-          fontFamily: "Metropolis",
-          appBarTheme: const AppBarTheme(
-              backgroundColor: constants.lightScaffoldBackgroundColor,
-              elevation: 0.0,
-              iconTheme: IconThemeData(color: constants.black)),
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: constants.primaryAppColor),
-          scaffoldBackgroundColor: constants.lightScaffoldBackgroundColor,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeCubit()..getHomeData(),
         ),
-        onGenerateRoute: onGenerate,
-        initialRoute: token != null || token != ""
-            ? AppRoutes.navBarRoute
-            : AppRoutes.registerPageRoute);
+      ],
+      child: MaterialApp(
+          title: 'Ecommerce App',
+          debugShowCheckedModeBanner: false,
+          scaffoldMessengerKey: scaffoldKey,
+          navigatorKey: navigatorKey,
+          theme: ThemeData(
+            fontFamily: "Metropolis",
+            appBarTheme: const AppBarTheme(
+                backgroundColor: constants.lightScaffoldBackgroundColor,
+                elevation: 0.0,
+                iconTheme: IconThemeData(color: constants.black)),
+            colorScheme: ColorScheme.fromSwatch()
+                .copyWith(primary: constants.primaryAppColor),
+            scaffoldBackgroundColor: constants.lightScaffoldBackgroundColor,
+          ),
+          onGenerateRoute: onGenerate,
+          initialRoute: token != null || token != ""
+              ? AppRoutes.navBarRoute
+              : AppRoutes.registerPageRoute),
+    );
   }
 }
