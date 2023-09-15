@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 class ApiService {
   final Dio dio;
-  static final String _baseUrl = "https://student.valuxapps.com/api/";
+  final String _baseUrl = "https://student.valuxapps.com/api/";
 
   ApiService(this.dio);
 
