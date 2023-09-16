@@ -5,6 +5,7 @@ import 'package:ecommerce/views/register/view.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../views/nav_bar/view.dart';
+import '../../views/product/products_model.dart';
 import 'routes.dart';
 
 Route<dynamic> onGenerate(RouteSettings settings) {
@@ -25,8 +26,12 @@ Route<dynamic> onGenerate(RouteSettings settings) {
       return CupertinoPageRoute(
           builder: (_) => const NavBarView(), settings: settings);
     case AppRoutes.productPageRoute:
+      final product = settings.arguments as Datum;
       return CupertinoPageRoute(
-          builder: (_) => const ProductView(), settings: settings);
+          builder: (_) => ProductView(
+                product: product,
+              ),
+          settings: settings);
 
     default:
       return CupertinoPageRoute(

@@ -1,26 +1,43 @@
 import 'package:dio/dio.dart';
-import 'package:ecommerce/views/home/home_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/api_services/api_services.dart';
+import '../product/products_model.dart';
 
 part 'state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  late HomeModel homeModel;
+  late ProductsModel productsModel;
+  late List<Datum>? products;
+  List<Datum> saleProducts = [];
+  List<Datum> newProducts = [];
+
   static HomeCubit of(context) => BlocProvider.of(context);
 
   Future<void> getHomeData() async {
     emit(HomeLoading());
     try {
-      final response = await ApiService(Dio()).get(url: 'home');
+      final response = await ApiService(Dio()).get(url: 'products');
       // debugPrint(response.data.toString());
-      homeModel = HomeModel.fromJson(response.data);
-      debugPrint('ssssssssssssss');
+      productsModel = ProductsModel.fromJson(response.data);
+      products = productsModel.data?.data?.map((e) => e).toList();
+
+      for (var i = 0; i < products!.length; i++) {
+        if (products![i].discount == 0) {
+          newProducts.add(products![i]);
+        } else {
+          saleProducts.add(products![i]);
+        }
+      }
+
+      // products = productsModel.data?.data?.map((e) => e).toList();
+
+      // debugPrint(products![0].name);
+      // debugPrint('ssssssssssssss');
     } catch (e) {
       debugPrint(e.toString());
     }

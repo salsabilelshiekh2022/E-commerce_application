@@ -3,19 +3,23 @@ import 'package:ecommerce/core/router/routes.dart';
 import 'package:ecommerce/widgets/rating_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../views/product/products_model.dart';
 import 'app_text.dart';
 import 'favorite_button.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.product});
 
   static bool sale = true;
+
+  final Datum product;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigatorKey.currentState!.pushNamed(AppRoutes.productPageRoute);
+        navigatorKey.currentState!
+            .pushNamed(AppRoutes.productPageRoute, arguments: product);
       },
       child: SizedBox(
         width: 150,
@@ -30,13 +34,14 @@ class ProductItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
+                      product.images[0] ??
+                          'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
                       height: 184,
                       width: 148,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  sale
+                  product.discount != 0
                       ? Padding(
                           padding: const EdgeInsets.only(top: 8, left: 9),
                           child: Container(
@@ -45,9 +50,9 @@ class ProductItem extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: primaryAppColor,
                                 borderRadius: BorderRadius.circular(29)),
-                            child: const Align(
+                            child: Align(
                               child: AppText(
-                                text: '-20% ',
+                                text: '-${product.discount}%',
                                 fontSize: 11,
                                 color: white,
                               ),
@@ -68,34 +73,36 @@ class ProductItem extends StatelessWidget {
               height: 6,
             ),
             const AppText(
-              text: 'Dorothy Perkins',
+              text: 'Amazon',
               fontSize: 11,
               color: grey,
             ),
             const SizedBox(
               height: 5,
             ),
-            const AppText(
-              text: 'Evening Dress',
+            AppText(
+              text: product.name ?? "",
               fontSize: 16,
               color: black,
             ),
             const SizedBox(
               height: 3,
             ),
-            const Row(
+            Row(
               children: [
-                AppText(
-                  text: '15\$',
-                  fontSize: 14,
-                  color: grey,
-                  decoration: TextDecoration.lineThrough,
-                ),
-                SizedBox(
+                product.discount != 0
+                    ? AppText(
+                        text: '${product.oldPrice}\$',
+                        fontSize: 14,
+                        color: grey,
+                        decoration: TextDecoration.lineThrough,
+                      )
+                    : const SizedBox(),
+                const SizedBox(
                   width: 4,
                 ),
                 AppText(
-                  text: '12\$',
+                  text: '${product.price}\$',
                   fontSize: 14,
                   color: primaryAppColor,
                 ),

@@ -24,7 +24,8 @@ class AppText extends StatelessWidget {
           fontSize: fontSize,
           fontWeight: fontWeight,
           decoration: decoration,
-          decorationThickness: 2),
+          decorationThickness: 2,
+          overflow: TextOverflow.ellipsis),
     );
   }
 }

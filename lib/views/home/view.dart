@@ -1,11 +1,9 @@
-import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:ecommerce/views/home/cubit.dart';
 import 'package:ecommerce/widgets/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants.dart';
-import '../../widgets/app_text.dart';
 import '../../widgets/header_of_list.dart';
 import '../../widgets/product_item.dart';
 
@@ -27,28 +25,11 @@ class HomeView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Stack(
-                        alignment: Alignment.bottomLeft,
-                        children: [
-                          Image.network(
-                            'https://i.pinimg.com/564x/5d/47/39/5d4739321c109f2304db1db78f543547.jpg',
-                            width: double.infinity,
-                            height: height * .32,
-                            fit: BoxFit.cover,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 26.0,
-                            ),
-                            child: AppText(
-                              text: 'Street Clothes',
-                              color: white,
-                              fontSize: 34,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                      Image.asset(
+                        'assets/images/1.png',
+                        width: double.infinity,
+                        height: height * .32,
+                        fit: BoxFit.cover,
                       ),
                       const SizedBox(
                         height: 30,
@@ -65,13 +46,14 @@ class HomeView extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return const Padding(
-                                padding: EdgeInsets.only(right: 17),
-                                child: ProductItem(),
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 17),
+                                child: ProductItem(
+                                    product: cubit.saleProducts[index]),
                               );
                             },
                             scrollDirection: Axis.horizontal,
-                            itemCount: 8,
+                            itemCount: cubit.saleProducts.length,
                           ),
                         ),
                       ),
@@ -90,13 +72,14 @@ class HomeView extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return const Padding(
-                                padding: EdgeInsets.only(right: 17),
-                                child: ProductItem(),
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 17),
+                                child: ProductItem(
+                                    product: cubit.newProducts[index]),
                               );
                             },
                             scrollDirection: Axis.horizontal,
-                            itemCount: 8,
+                            itemCount: cubit.newProducts.length,
                           ),
                         ),
                       ),

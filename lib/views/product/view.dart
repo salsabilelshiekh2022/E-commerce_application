@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/views/product/products_model.dart';
 import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:ecommerce/widgets/favorite_button.dart';
@@ -9,8 +10,8 @@ import 'package:flutter_margin_widget/flutter_margin_widget.dart';
 import '../../widgets/rating_bar.dart';
 
 class ProductView extends StatelessWidget {
-  const ProductView({super.key});
-
+  const ProductView({super.key, required this.product});
+  final Datum product;
   @override
   Widget build(BuildContext context) {
     final height = getHeight(context);
@@ -31,8 +32,8 @@ class ProductView extends StatelessWidget {
             icon: const Icon(Icons.share),
           ),
         ],
-        title: const AppText(
-          text: 'Short dress',
+        title: AppText(
+          text: product.name!.substring(0, 13),
           fontSize: 18,
         ),
         centerTitle: true,
@@ -45,10 +46,10 @@ class ProductView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                    'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
+                    product.images[0],
                     height: height * .5,
                     width: width,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                   const SizedBox(
                     height: 14,
@@ -65,23 +66,23 @@ class ProductView extends StatelessWidget {
                         const SizedBox(
                           height: 22,
                         ),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AppText(
-                              text: 'H&M',
+                            const AppText(
+                              text: 'Amazon',
                               fontSize: 24,
                               color: black,
                             ),
                             AppText(
-                              text: '\$19.99',
+                              text: '\$${product.price}',
                               fontSize: 24,
                               color: black,
                             ),
                           ],
                         ),
-                        const AppText(
-                          text: 'Short black dress',
+                        AppText(
+                          text: product.name!.substring(0, 10),
                           fontSize: 11,
                           color: grey,
                         ),
@@ -101,9 +102,8 @@ class ProductView extends StatelessWidget {
                         const SizedBox(
                           height: 16,
                         ),
-                        const AppText(
-                          text:
-                              'Short dress in soft cotton jersey with decorative buttons down the front and a wide, frill-trimmed square neckline with concealed elastication. Elasticated seam under the bust and short puff sleeves with a small frill trim.',
+                        AppText(
+                          text: product.description!,
                           fontSize: 14,
                           color: black,
                         ),
@@ -187,9 +187,11 @@ class ProductView extends StatelessWidget {
                               physics: const BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                return const Padding(
-                                  padding: EdgeInsets.only(right: 17),
-                                  child: ProductItem(),
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 17),
+                                  child: ProductItem(
+                                    product: product,
+                                  ),
                                 );
                               }),
                         )
