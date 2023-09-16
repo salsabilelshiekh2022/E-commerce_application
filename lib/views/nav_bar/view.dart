@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../constants.dart';
+import '../categories/view.dart';
 import '../home/view.dart';
 
 class NavBarView extends StatefulWidget {
@@ -17,7 +18,7 @@ class _NavBarViewState extends State<NavBarView> {
   List<Widget> _buildScreens() {
     return [
       const HomeView(),
-      Container(),
+      const CategoriesView(),
       Container(),
       Container(),
       Container(),
