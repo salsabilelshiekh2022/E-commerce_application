@@ -60,8 +60,12 @@ class ProductItem extends StatelessWidget {
                           ),
                         )
                       : const SizedBox(),
-                  const Positioned(
-                      top: 164, left: 112, child: FavoriteButton()),
+                  Positioned(
+                      top: 164,
+                      left: 112,
+                      child: FavoriteButton(
+                        product: product,
+                      )),
                 ],
               ),
             ),

@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'constants.dart' as constants;
 import 'constants.dart';
+import 'views/favorite/cubit.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit()..getHomeData(),
         ),
+        BlocProvider(create: (context) => FavoriteCubit()..getFavorits()),
       ],
       child: MaterialApp(
           title: 'Ecommerce App',

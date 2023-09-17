@@ -1,3 +1,5 @@
+import 'package:ecommerce/views/favorite/cubit.dart';
+import 'package:ecommerce/views/favorite/favorite_model.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -5,7 +7,9 @@ import 'app_text.dart';
 import 'rating_bar.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  const ProductCard({super.key, required this.product});
+
+  final Datum product;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class ProductCard extends StatelessWidget {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
               child: Image.network(
-                'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
+                product.product!.image!,
                 width: width * 0.28,
                 fit: BoxFit.cover,
               ),
@@ -44,7 +48,7 @@ class ProductCard extends StatelessWidget {
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const AppText(
-                            text: 'LIME',
+                            text: 'Amazon',
                             color: grey,
                             fontSize: 11,
                           ),
@@ -52,7 +56,10 @@ class ProductCard extends StatelessWidget {
                             width: 160,
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              FavoriteCubit.of(context)
+                                  .toggleFavorite(product.product!.id!);
+                            },
                             child: const Icon(
                               Icons.close_rounded,
                               color: grey,
@@ -64,8 +71,8 @@ class ProductCard extends StatelessWidget {
                       const SizedBox(
                         height: 3,
                       ),
-                      const AppText(
-                        text: 'Shirt',
+                      AppText(
+                        text: product.product!.name!.substring(0, 10),
                         fontSize: 16,
                         color: black,
                       ),
@@ -87,29 +94,29 @@ class ProductCard extends StatelessWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      const Row(
+                      Row(
                         children: [
                           AppText(
-                            text: '32\$',
+                            text: '${product.product!.price}\$',
                             fontSize: 14,
                             color: black,
                           ),
-                          SizedBox(
-                            width: 10,
+                          const SizedBox(
+                            width: 5,
                           ),
-                          StarRatingBar(),
-                          AppText(
+                          const StarRatingBar(),
+                          const AppText(
                             text: '(10)',
                             fontSize: 11,
                             color: grey,
-                          ),
+                          )
                         ],
                       )
                     ],
                   ),
                   Positioned(
                     top: 45,
-                    left: 163,
+                    left: 180,
                     child: GestureDetector(
                       onTap: () {},
                       child: Container(

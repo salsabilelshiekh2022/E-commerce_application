@@ -1,7 +1,9 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/views/favorite/cubit.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widgets/product_card.dart';
 
@@ -10,45 +12,54 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: const AppText(
-            text: 'Favorites',
-            fontSize: 18,
-          ),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
+    final cubit = FavoriteCubit.of(context);
+    return BlocBuilder(
+        bloc: FavoriteCubit.of(context),
+        builder: (context, state) {
+          cubit.getFavorits();
+
+          return Scaffold(
+            appBar: AppBar(
+                title: const AppText(
+                  text: 'Favorites',
+                  fontSize: 18,
+                ),
+                centerTitle: true,
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.search),
+                  ),
+                ]),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      const ListOfItems(),
+                      const FilterBar(),
+                      ListView.builder(
+                        itemBuilder: ((context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: ProductCard(
+                              product: cubit.favorites![index],
+                            ),
+                          );
+                        }),
+                        itemCount: FavoriteCubit.of(context).favorites!.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ]),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const ListOfItems(),
-                const FilterBar(),
-                ListView.builder(
-                  itemBuilder: ((context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: ProductCard(),
-                    );
-                  }),
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+          );
+        });
   }
 }
 

@@ -46,7 +46,7 @@ class ProductView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                    product.images[0],
+                    product.image!,
                     height: height * .5,
                     width: width,
                     fit: BoxFit.contain,
@@ -59,9 +59,11 @@ class ProductView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.topRight,
-                          child: FavoriteButton(),
+                          child: FavoriteButton(
+                            product: product,
+                          ),
                         ),
                         const SizedBox(
                           height: 22,

@@ -33,11 +33,6 @@ class HomeCubit extends Cubit<HomeState> {
           saleProducts.add(products![i]);
         }
       }
-
-      // products = productsModel.data?.data?.map((e) => e).toList();
-
-      // debugPrint(products![0].name);
-      // debugPrint('ssssssssssssss');
     } catch (e) {
       debugPrint(e.toString());
     }
