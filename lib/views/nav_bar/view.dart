@@ -6,6 +6,7 @@ import '../../constants.dart';
 import '../categories/view.dart';
 import '../favorite/view.dart';
 import '../home/view.dart';
+import '../profile/view.dart';
 
 class NavBarView extends StatefulWidget {
   const NavBarView({super.key});
@@ -22,7 +23,7 @@ class _NavBarViewState extends State<NavBarView> {
       const CategoriesView(),
       Container(),
       const FavoriteView(),
-      Container(),
+      const ProfileView(),
     ];
   }
 
