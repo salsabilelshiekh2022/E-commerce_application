@@ -25,8 +25,8 @@ class HomeView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        'assets/images/1.png',
+                      Image.network(
+                        "https://i.pinimg.com/564x/9a/a6/64/9aa66492c28bd11917d5902f8c555b5f.jpg",
                         width: double.infinity,
                         height: height * .32,
                         fit: BoxFit.cover,
