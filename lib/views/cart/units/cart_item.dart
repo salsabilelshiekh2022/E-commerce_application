@@ -1,10 +1,14 @@
+import 'package:ecommerce/views/cart/cart_model.dart' as cart;
+import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants.dart';
 import '../../../widgets/app_text.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({super.key, required this.cartItem});
+  final cart.CartItem cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class CartItem extends StatelessWidget {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
             child: Image.network(
-              'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
+              cartItem.product!.image!,
               width: width * 0.28,
               fit: BoxFit.cover,
             ),
@@ -51,8 +55,8 @@ class CartItem extends StatelessWidget {
                     )
                   ],
                 ),
-                const AppText(
-                  text: 'Pullover',
+                AppText(
+                  text: cartItem.product!.name!.substring(0, 10),
                   fontSize: 16,
                   color: black,
                 ),
@@ -97,8 +101,8 @@ class CartItem extends StatelessWidget {
                     const SizedBox(
                       width: 16,
                     ),
-                    const AppText(
-                      text: '1',
+                    AppText(
+                      text: '${cartItem.quantity!}',
                       fontSize: 14,
                       color: black,
                     ),
@@ -124,12 +128,16 @@ class CartItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 55,
+                      width: 40,
                     ),
-                    const AppText(
-                      text: '55\$',
-                      fontSize: 14,
-                      color: black,
+                    BlocBuilder<CartCubit, CartState>(
+                      builder: (context, state) {
+                        return AppText(
+                          text: '${cartItem.product!.price!.toInt()}\$',
+                          fontSize: 14,
+                          color: black,
+                        );
+                      },
                     ),
                   ],
                 )

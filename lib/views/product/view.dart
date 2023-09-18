@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:ecommerce/views/product/products_model.dart';
 import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_margin_widget/flutter_margin_widget.dart';
 
 import '../../widgets/rating_bar.dart';
+import '../../widgets/snak_bar.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key, required this.product});
@@ -214,8 +216,12 @@ class ProductView extends StatelessWidget {
                 color: lightScaffoldBackgroundColor,
                 padding: const EdgeInsets.only(
                     top: 20, bottom: 34, left: 16, right: 16),
-                child: const AppButton(
+                child: AppButton(
                   title: 'ADD TO CART',
+                  onTap: () {
+                    CartCubit.of(context).toggleAddToCart(product.id!);
+                    showSnakBar('Added To Cart', success);
+                  },
                 ),
               ),
             ),

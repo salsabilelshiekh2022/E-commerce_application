@@ -129,9 +129,9 @@ class Datum extends Equatable {
 
 class Product extends Equatable {
   final int? id;
-  final int? price;
-  final int? oldPrice;
-  final int? discount;
+  final dynamic price;
+  final dynamic oldPrice;
+  final dynamic discount;
   final String? image;
   final String? name;
   final String? description;
@@ -148,9 +148,9 @@ class Product extends Equatable {
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json['id'] as int?,
-        price: json['price'] as int?,
-        oldPrice: json['old_price'] as int?,
-        discount: json['discount'] as int?,
+        price: json['price'] as dynamic,
+        oldPrice: json['old_price'] as dynamic,
+        discount: json['discount'] as dynamic,
         image: json['image'] as String?,
         name: json['name'] as String?,
         description: json['description'] as String?,

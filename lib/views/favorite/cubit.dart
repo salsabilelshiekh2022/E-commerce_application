@@ -33,7 +33,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       }
       emit(GetFavorites());
     } catch (e) {
-      debugPrint('error');
+      debugPrint(e.toString());
     }
     emit(FavoriteInitial());
   }

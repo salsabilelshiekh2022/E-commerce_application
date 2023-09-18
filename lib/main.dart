@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/app_storage/app_storage.dart';
 import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/core/router/routes.dart';
+import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:ecommerce/views/home/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           create: (context) => HomeCubit()..getHomeData(),
         ),
         BlocProvider(create: (context) => FavoriteCubit()..getFavorits()),
+        BlocProvider(create: (context) => CartCubit()..getCartItems()),
       ],
       child: MaterialApp(
           title: 'Ecommerce App',
