@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../constants.dart';
+import '../cart/view.dart';
 import '../categories/view.dart';
 import '../favorite/view.dart';
 import '../home/view.dart';
@@ -21,7 +22,7 @@ class _NavBarViewState extends State<NavBarView> {
     return [
       const HomeView(),
       const CategoriesView(),
-      Container(),
+      const CartView(),
       const FavoriteView(),
       const ProfileView(),
     ];
@@ -47,7 +48,7 @@ class _NavBarViewState extends State<NavBarView> {
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.shopping_bag_outlined),
-        title: "Cart",
+        title: "Bag",
         activeColorPrimary: primaryAppColor,
         inactiveColorPrimary: const Color(0xff9B9B9B),
         iconSize: 24,
