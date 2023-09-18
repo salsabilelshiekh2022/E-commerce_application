@@ -1,6 +1,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/router/routes.dart';
 import '../../widgets/app_text.dart';
 
 class ShoppingAddressView extends StatelessWidget {
@@ -26,7 +27,9 @@ class ShoppingAddressView extends StatelessWidget {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          navigatorKey.currentState!.pushNamed(AppRoutes.addingAdressPageRoute);
+        },
         backgroundColor: black,
         child: const Icon(
           Icons.add_rounded,

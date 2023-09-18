@@ -1,3 +1,4 @@
+import 'package:ecommerce/views/adding_address/view.dart';
 import 'package:ecommerce/views/forget_password/view.dart';
 import 'package:ecommerce/views/login/view.dart';
 import 'package:ecommerce/views/product/view.dart';
@@ -41,6 +42,9 @@ Route<dynamic> onGenerate(RouteSettings settings) {
     case AppRoutes.shoppingAddressPageRoute:
       return CupertinoPageRoute(
           builder: (_) => const ShoppingAddressView(), settings: settings);
+    case AppRoutes.addingAdressPageRoute:
+      return CupertinoPageRoute(
+          builder: (_) => const AddingAddressView(), settings: settings);
 
     default:
       return CupertinoPageRoute(
