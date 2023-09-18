@@ -2,6 +2,7 @@ import 'package:ecommerce/views/forget_password/view.dart';
 import 'package:ecommerce/views/login/view.dart';
 import 'package:ecommerce/views/product/view.dart';
 import 'package:ecommerce/views/register/view.dart';
+import 'package:ecommerce/views/setting/view.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../views/nav_bar/view.dart';
@@ -32,6 +33,10 @@ Route<dynamic> onGenerate(RouteSettings settings) {
                 product: product,
               ),
           settings: settings);
+
+    case AppRoutes.settingPageRoute:
+      return CupertinoPageRoute(
+          builder: (_) => const SettingView(), settings: settings);
 
     default:
       return CupertinoPageRoute(

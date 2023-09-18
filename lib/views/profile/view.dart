@@ -2,6 +2,7 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/router/routes.dart';
 import '../../widgets/profile_section.dart';
 
 class ProfileView extends StatelessWidget {
@@ -91,9 +92,13 @@ class ProfileView extends StatelessWidget {
                   title: 'My reviews',
                   subTitle: 'Reviews for 4 items',
                 ),
-                const ProfileSection(
+                ProfileSection(
                   title: 'Settings',
                   subTitle: 'Notifications, password',
+                  onTap: () {
+                    navigatorKey.currentState!
+                        .pushNamed(AppRoutes.settingPageRoute);
+                  },
                 ),
               ],
             )),

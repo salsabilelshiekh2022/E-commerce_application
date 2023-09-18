@@ -5,15 +5,16 @@ import 'app_text.dart';
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection(
-      {super.key, required this.title, required this.subTitle});
+      {super.key, required this.title, required this.subTitle, this.onTap});
   final String title;
   final String subTitle;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final width = getWidth(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: SizedBox(
         height: 72,
         width: width,

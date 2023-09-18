@@ -5,4 +5,5 @@ class AppRoutes {
   static const String homePageRoute = '/home';
   static const String navBarRoute = '/navBar';
   static const String productPageRoute = '/product';
+  static const String settingPageRoute = '/setting';
 }
