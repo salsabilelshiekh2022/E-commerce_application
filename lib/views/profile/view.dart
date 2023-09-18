@@ -76,9 +76,13 @@ class ProfileView extends StatelessWidget {
                   title: 'My orders',
                   subTitle: 'Already have 12 orders',
                 ),
-                const ProfileSection(
+                ProfileSection(
                   title: 'Shipping addresses',
                   subTitle: '3 ddresses',
+                  onTap: () {
+                    navigatorKey.currentState!
+                        .pushNamed(AppRoutes.shoppingAddressPageRoute);
+                  },
                 ),
                 const ProfileSection(
                   title: 'Payment methods',

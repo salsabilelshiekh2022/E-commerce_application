@@ -61,7 +61,9 @@ class SettingView extends StatelessWidget {
                   height: 21,
                 ),
                 AppTextFormField(
-                  validator: (value) {},
+                  validator: (value) {
+                    return;
+                  },
                   hintText: 'Date of birth',
                 ),
                 const SizedBox(

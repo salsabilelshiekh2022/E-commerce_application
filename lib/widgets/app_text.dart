@@ -9,15 +9,18 @@ class AppText extends StatelessWidget {
       this.color = constants.black,
       this.fontSize = 14,
       this.fontWeight,
-      this.decoration});
+      this.decoration,
+      this.maxLines});
   final String text;
   final Color color;
   final double fontSize;
   final FontWeight? fontWeight;
   final TextDecoration? decoration;
+  final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return Text(
+      maxLines: maxLines,
       text,
       style: TextStyle(
           color: color,
