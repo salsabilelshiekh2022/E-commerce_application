@@ -6,7 +6,7 @@ class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
     this.hintText,
-    required this.validator,
+    this.validator,
     this.onSave,
     this.controller,
     this.onChange,
@@ -15,6 +15,7 @@ class AppTextFormField extends StatelessWidget {
     this.focusNode,
     this.onEditingComplete,
     this.textInputAction,
+    this.enable = true,
   });
   final bool? secure;
   final String? hintText;
@@ -24,6 +25,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String)? onChange;
   final void Function(String?)? onSubmitted;
   final FocusNode? focusNode;
+  final bool? enable;
 
   final VoidCallback? onEditingComplete;
   final TextInputAction? textInputAction;
@@ -33,7 +35,7 @@ class AppTextFormField extends StatelessWidget {
     return Material(
       borderRadius: BorderRadiusDirectional.circular(4),
       child: TextFormField(
-        enabled: true,
+        enabled: enable,
         onSaved: onSave,
         onFieldSubmitted: onSubmitted,
         onChanged: onChange,
@@ -56,6 +58,7 @@ class AppTextFormField extends StatelessWidget {
           focusedBorder: inputBorder(constants.primaryAppColor),
           errorBorder: inputBorder(constants.error),
           focusedErrorBorder: inputBorder(constants.error),
+          disabledBorder: inputBorder(constants.white),
         ),
       ),
     );

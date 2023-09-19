@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/validator/validator.dart';
 import '../../widgets/app_text.dart';
+import '../../widgets/bottom_sheet.dart';
 import '../../widgets/switch_button.dart';
 
 class SettingView extends StatelessWidget {
@@ -69,29 +70,40 @@ class SettingView extends StatelessWidget {
                 const SizedBox(
                   height: 52,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AppText(
+                    const AppText(
                       text: 'Password',
                       fontSize: 16,
                       color: black,
                     ),
-                    AppText(
-                      text: 'Change',
-                      fontSize: 14,
-                      color: grey,
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40.0)),
+                            context: context,
+                            builder: (context) {
+                              // return const AddNoteButtomSheet();
+                              return const ShowBottomSheet();
+                            });
+                      },
+                      child: const AppText(
+                        text: 'Change',
+                        fontSize: 14,
+                        color: grey,
+                      ),
                     )
                   ],
                 ),
                 const SizedBox(
                   height: 21,
                 ),
-                AppTextFormField(
+                const AppTextFormField(
                   hintText: '*********',
-                  validator: (value) {
-                    return Validator.validatePassword(value);
-                  },
+                  enable: false,
                 ),
                 const SizedBox(
                   height: 55,
