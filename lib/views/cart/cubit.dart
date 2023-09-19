@@ -12,16 +12,20 @@ part 'state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  late List<ProductModel>? cartItems;
+  List<ProductModel>? cartItems;
   Set<int> cartID = {};
+  double totalCost = 0;
 
   static CartCubit of(context) => BlocProvider.of(context);
 
   Future<void> getCartItems() async {
+    emit(CartLoading());
     try {
       final response = await ApiService(Dio()).get(url: 'carts', token: token);
 
       List<dynamic> cartList = response.data['data']['cart_items'];
+      totalCost = response.data['data']['total'];
+      print(totalCost);
       cartItems = [];
       for (var item in cartList) {
         cartItems!.add(ProductModel.fromJson(item['product']));
@@ -31,7 +35,6 @@ class CartCubit extends Cubit<CartState> {
     } catch (e) {
       debugPrint(e.toString());
     }
-    emit(CartInitial());
   }
 
   Future<dynamic> toggleAddToCart(int id) async {
@@ -53,6 +56,5 @@ class CartCubit extends Cubit<CartState> {
     } catch (e) {
       debugPrint(e.toString());
     }
-    emit(CartInitial());
   }
 }

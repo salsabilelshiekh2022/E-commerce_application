@@ -8,80 +8,93 @@ import '../../widgets/app_text.dart';
 import 'units/cart_item.dart';
 import 'units/promo_code_field.dart';
 
-class CartView extends StatelessWidget {
+class CartView extends StatefulWidget {
   const CartView({super.key});
+
+  @override
+  State<CartView> createState() => _CartViewState();
+}
+
+class _CartViewState extends State<CartView> {
+  @override
+  void initState() {
+    CartCubit.of(context).getCartItems();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final cubit = CartCubit.of(context);
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        cubit.getCartItems();
-        return Scaffold(
-          appBar: AppBar(
-              title: const AppText(
-                text: 'My Bag',
-                fontSize: 18,
-              ),
-              centerTitle: true,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.search),
-                ),
-              ]),
-          body: SafeArea(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    ListView.builder(
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 16),
-                          child: CartItem(
-                            product: cubit.cartItems![index],
+        return state is CartLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Scaffold(
+                appBar: AppBar(
+                    title: const AppText(
+                      text: 'My Bag',
+                      fontSize: 18,
+                    ),
+                    centerTitle: true,
+                    actions: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.search),
+                      ),
+                    ]),
+                body: SafeArea(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          ListView.builder(
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 16),
+                                child: CartItem(
+                                  product: cubit.cartItems![index],
+                                ),
+                              );
+                            },
+                            itemCount: cubit.cartItems!.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
                           ),
-                        );
-                      },
-                      itemCount: cubit.cartItems!.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          const PromoCodeField(),
+                          const SizedBox(
+                            height: 28,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const AppText(
+                                text: 'Total amount:',
+                                fontSize: 14,
+                                color: grey,
+                              ),
+                              AppText(
+                                text: '${cubit.totalCost.toInt()}\$',
+                                fontSize: 18,
+                                color: black,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 70,
+                          ),
+                          const AppButton(title: 'CHECK OUT'),
+                        ],
+                      ),
                     ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    const PromoCodeField(),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AppText(
-                          text: 'Total amount:',
-                          fontSize: 14,
-                          color: grey,
-                        ),
-                        AppText(
-                          text: '5000\$', //'${cubit.cartModel.data!.total!}\$',
-                          fontSize: 18,
-                          color: black,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 70,
-                    ),
-                    const AppButton(title: 'CHECK OUT'),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ),
-        );
+              );
       },
     );
   }

@@ -1,53 +1,26 @@
-import 'package:ecommerce/views/adding_address/view.dart';
-import 'package:ecommerce/views/forget_password/view.dart';
-import 'package:ecommerce/views/login/view.dart';
-import 'package:ecommerce/views/product/view.dart';
-import 'package:ecommerce/views/register/view.dart';
-import 'package:ecommerce/views/setting/view.dart';
-import 'package:ecommerce/views/shopping_address/view.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../../views/nav_bar/view.dart';
-import '../../views/product/products_model.dart';
-import 'routes.dart';
+import '../../constants.dart';
 
-Route<dynamic> onGenerate(RouteSettings settings) {
-  switch (settings.name) {
-    case AppRoutes.loginPageRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const LoginView(), settings: settings);
-    case AppRoutes.registerPageRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const RegisterView(), settings: settings);
-    case AppRoutes.forgetPasswordRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const ForgetPasswordView(), settings: settings);
-    case AppRoutes.navBarRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const NavBarView(), settings: settings);
-    case AppRoutes.homePageRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const NavBarView(), settings: settings);
-    case AppRoutes.productPageRoute:
-      final product = settings.arguments as ProductModel;
-      return CupertinoPageRoute(
-          builder: (_) => ProductView(
-                product: product,
-              ),
-          settings: settings);
+Route<dynamic>? onGenerate(RouteSettings settings) => null;
 
-    case AppRoutes.settingPageRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const SettingView(), settings: settings);
-    case AppRoutes.shoppingAddressPageRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const ShoppingAddressView(), settings: settings);
-    case AppRoutes.addingAdressPageRoute:
-      return CupertinoPageRoute(
-          builder: (_) => const AddingAddressView(), settings: settings);
+class AppRouter {
+  static BuildContext context = navigatorKey.currentContext!;
 
-    default:
-      return CupertinoPageRoute(
-          builder: (_) => const RegisterView(), settings: settings);
-  }
+  static Future<dynamic> navigateTo(Widget page) =>
+      navigatorKey.currentState!.push(_materialPageRoute(page));
+
+  static Future<dynamic> navigateAndReplace(Widget page) =>
+      navigatorKey.currentState!.pushReplacement(_materialPageRoute(page));
+
+  static Future<dynamic> navigateAndPop(Widget page) =>
+      navigatorKey.currentState!.pushAndRemoveUntil(
+        _materialPageRoute(page),
+        (_) => false,
+      );
+
+  static void pop([Object? result]) => navigatorKey.currentState!.pop(result);
+
+  static Route<dynamic> _materialPageRoute(Widget page) =>
+      MaterialPageRoute(builder: (_) => page);
 }

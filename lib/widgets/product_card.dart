@@ -1,9 +1,10 @@
+import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/views/favorite/cubit.dart';
 import 'package:flutter/material.dart';
 import '../views/product/products_model.dart';
-import '../core/router/routes.dart';
 
 import '../constants.dart';
+import '../views/product/view.dart';
 import 'app_text.dart';
 import 'rating_bar.dart';
 
@@ -18,8 +19,9 @@ class ProductCard extends StatelessWidget {
     final height = getHeight(context);
     return GestureDetector(
         onTap: () {
-          navigatorKey.currentState!
-              .pushNamed(AppRoutes.productPageRoute, arguments: product);
+          AppRouter.navigateTo(
+            ProductView(product: product),
+          );
         },
         child: Container(
           width: width,

@@ -1,4 +1,6 @@
 import 'package:ecommerce/core/assets/app_assets.dart';
+import 'package:ecommerce/core/router/router.dart';
+import 'package:ecommerce/views/forget_password/view.dart';
 import 'package:ecommerce/views/login/cubit.dart';
 import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text.dart';
@@ -6,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants.dart';
-import '../../core/router/routes.dart';
 import '../../core/validator/validator.dart';
 import '../../widgets/app_text_form_field.dart';
 import '../../widgets/loading_button.dart';
@@ -39,6 +40,7 @@ class LoginView extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   vertical: height * .0418, horizontal: 14.0),
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Form(
                   key: cubit.formKey,
                   child: Column(
@@ -91,8 +93,7 @@ class LoginView extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, AppRoutes.forgetPasswordRoute);
+                            AppRouter.navigateTo(const ForgetPasswordView());
                           },
                           child: const AppText(
                             text: 'Forgot your password? ',

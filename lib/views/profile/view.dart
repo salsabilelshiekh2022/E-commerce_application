@@ -1,8 +1,10 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/router/router.dart';
+import 'package:ecommerce/views/setting/view.dart';
+import 'package:ecommerce/views/shopping_address/view.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/router/routes.dart';
 import '../../widgets/profile_section.dart';
 
 class ProfileView extends StatelessWidget {
@@ -80,8 +82,7 @@ class ProfileView extends StatelessWidget {
                   title: 'Shipping addresses',
                   subTitle: '3 ddresses',
                   onTap: () {
-                    navigatorKey.currentState!
-                        .pushNamed(AppRoutes.shoppingAddressPageRoute);
+                    AppRouter.navigateTo(const ShoppingAddressView());
                   },
                 ),
                 const ProfileSection(
@@ -100,8 +101,7 @@ class ProfileView extends StatelessWidget {
                   title: 'Settings',
                   subTitle: 'Notifications, password',
                   onTap: () {
-                    navigatorKey.currentState!
-                        .pushNamed(AppRoutes.settingPageRoute);
+                    AppRouter.navigateTo(const SettingView());
                   },
                 ),
               ],

@@ -1,4 +1,6 @@
 import 'package:ecommerce/core/assets/app_assets.dart';
+import 'package:ecommerce/core/router/router.dart';
+import 'package:ecommerce/views/login/view.dart';
 import 'package:ecommerce/views/register/cubit.dart';
 import 'package:ecommerce/widgets/app_text_form_field.dart';
 import 'package:ecommerce/widgets/loading_button.dart';
@@ -6,7 +8,6 @@ import 'package:ecommerce/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
-import '../../core/router/routes.dart';
 import '../../core/validator/validator.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/app_text.dart';
@@ -31,6 +32,7 @@ class RegisterView extends StatelessWidget {
                   right: 14,
                   bottom: height * .0418),
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Form(
                   key: cubit.formKey,
                   child: Column(
@@ -121,8 +123,7 @@ class RegisterView extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, AppRoutes.loginPageRoute);
+                            AppRouter.navigateTo(const LoginView());
                           },
                           child: const AppText(
                             text: 'Already have an account? ',

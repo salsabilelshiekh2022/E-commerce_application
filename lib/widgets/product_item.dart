@@ -1,8 +1,9 @@
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/core/router/routes.dart';
+import 'package:ecommerce/views/product/view.dart';
 import 'package:ecommerce/widgets/rating_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../core/router/router.dart';
 import '../views/product/products_model.dart';
 import 'app_text.dart';
 import 'favorite_button.dart';
@@ -18,8 +19,9 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigatorKey.currentState!
-            .pushNamed(AppRoutes.productPageRoute, arguments: product);
+        AppRouter.navigateTo(
+          ProductView(product: product),
+        );
       },
       child: SizedBox(
         width: 150,
