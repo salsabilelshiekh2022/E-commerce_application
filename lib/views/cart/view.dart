@@ -14,8 +14,7 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = CartCubit.of(context);
-    return BlocBuilder(
-      bloc: cubit,
+    return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         cubit.getCartItems();
         return Scaffold(
@@ -43,7 +42,7 @@ class CartView extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(top: 16),
                           child: CartItem(
-                            cartItem: cubit.cartItems![index],
+                            product: cubit.cartItems![index],
                           ),
                         );
                       },
@@ -58,16 +57,16 @@ class CartView extends StatelessWidget {
                     const SizedBox(
                       height: 28,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const AppText(
+                        AppText(
                           text: 'Total amount:',
                           fontSize: 14,
                           color: grey,
                         ),
                         AppText(
-                          text: '${cubit.cartModel.data!.total!}\$',
+                          text: '5000\$', //'${cubit.cartModel.data!.total!}\$',
                           fontSize: 18,
                           color: black,
                         ),
