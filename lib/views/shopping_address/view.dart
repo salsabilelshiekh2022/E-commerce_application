@@ -149,7 +149,7 @@ class _CheckBoxTileState extends State<CheckBoxTile> {
 
         controlAffinity: ListTileControlAffinity.leading,
         activeColor: black,
-        side: BorderSide(color: black),
+        side: const BorderSide(color: black),
         contentPadding: EdgeInsets.zero,
         //  <-- leading Checkbox
       ),

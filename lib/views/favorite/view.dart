@@ -14,7 +14,7 @@ class FavoriteView extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = FavoriteCubit.of(context);
     return BlocBuilder(
-        bloc: FavoriteCubit.of(context),
+        bloc: cubit,
         builder: (context, state) {
           cubit.getFavorits();
 
@@ -49,7 +49,7 @@ class FavoriteView extends StatelessWidget {
                             ),
                           );
                         }),
-                        itemCount: FavoriteCubit.of(context).favorites!.length,
+                        itemCount: cubit.favorites!.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                       )

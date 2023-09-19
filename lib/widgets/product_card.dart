@@ -1,6 +1,7 @@
 import 'package:ecommerce/views/favorite/cubit.dart';
-import 'package:ecommerce/views/favorite/favorite_model.dart';
 import 'package:flutter/material.dart';
+import '../views/product/products_model.dart';
+import '../core/router/routes.dart';
 
 import '../constants.dart';
 import 'app_text.dart';
@@ -9,15 +10,18 @@ import 'rating_bar.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
 
-  final Datum product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final width = getWidth(context);
     final height = getHeight(context);
-    return Column(
-      children: [
-        Container(
+    return GestureDetector(
+        onTap: () {
+          navigatorKey.currentState!
+              .pushNamed(AppRoutes.productPageRoute, arguments: product);
+        },
+        child: Container(
           width: width,
           height: height * .123,
           decoration: BoxDecoration(
@@ -29,7 +33,7 @@ class ProductCard extends StatelessWidget {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
               child: Image.network(
-                product.product!.image!,
+                product.image!,
                 width: width * 0.28,
                 fit: BoxFit.cover,
               ),
@@ -58,7 +62,7 @@ class ProductCard extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               FavoriteCubit.of(context)
-                                  .toggleFavorite(product.product!.id!);
+                                  .toggleFavorite(product.id!);
                             },
                             child: const Icon(
                               Icons.close_rounded,
@@ -72,7 +76,7 @@ class ProductCard extends StatelessWidget {
                         height: 3,
                       ),
                       AppText(
-                        text: product.product!.name!.substring(0, 10),
+                        text: product.name!.substring(0, 10),
                         fontSize: 16,
                         color: black,
                       ),
@@ -97,7 +101,7 @@ class ProductCard extends StatelessWidget {
                       Row(
                         children: [
                           AppText(
-                            text: '${product.product!.price}\$',
+                            text: '${product.price}\$',
                             fontSize: 14,
                             color: black,
                           ),
@@ -143,8 +147,6 @@ class ProductCard extends StatelessWidget {
               ),
             )
           ]),
-        ),
-      ],
-    );
+        ));
   }
 }

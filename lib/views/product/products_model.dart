@@ -6,9 +6,6 @@ class ProductModel {
   final String? image;
   final String? name;
   final String? description;
-  final List<dynamic> images;
-  final bool? inFavorites;
-  final bool? inCart;
 
   const ProductModel({
     this.id,
@@ -18,9 +15,6 @@ class ProductModel {
     this.image,
     this.name,
     this.description,
-    required this.images,
-    this.inFavorites,
-    this.inCart,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
@@ -31,8 +25,5 @@ class ProductModel {
         image: json['image'] as String?,
         name: json['name'] as String?,
         description: json['description'] as String?,
-        images: json['images'] as List<dynamic>,
-        inFavorites: json['in_favorites'] as bool?,
-        inCart: json['in_cart'] as bool?,
       );
 }
