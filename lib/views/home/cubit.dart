@@ -11,10 +11,9 @@ part 'state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  late ProductsModel productsModel;
-  late List<Datum>? products;
-  List<Datum> saleProducts = [];
-  List<Datum> newProducts = [];
+  List<ProductModel> products = [];
+  List<ProductModel> saleProducts = [];
+  List<ProductModel> newProducts = [];
 
   static HomeCubit of(context) => BlocProvider.of(context);
 
@@ -22,15 +21,18 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoading());
     try {
       final response = await ApiService(Dio()).get(url: 'products');
-      // debugPrint(response.data.toString());
-      productsModel = ProductsModel.fromJson(response.data);
-      products = productsModel.data?.data?.map((e) => e).toList();
 
-      for (var i = 0; i < products!.length; i++) {
-        if (products![i].discount == 0) {
-          newProducts.add(products![i]);
+      List<dynamic> productList = response.data['data']['data'];
+
+      for (var item in productList) {
+        products.add(ProductModel.fromJson(item));
+      }
+
+      for (var item in products) {
+        if (item.discount == 0) {
+          newProducts.add(item);
         } else {
-          saleProducts.add(products![i]);
+          saleProducts.add(item);
         }
       }
     } catch (e) {

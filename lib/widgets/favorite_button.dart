@@ -7,7 +7,7 @@ import '../constants.dart';
 
 class FavoriteButton extends StatelessWidget {
   const FavoriteButton({super.key, required this.product});
-  final Datum product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

@@ -29,7 +29,7 @@ Route<dynamic> onGenerate(RouteSettings settings) {
       return CupertinoPageRoute(
           builder: (_) => const NavBarView(), settings: settings);
     case AppRoutes.productPageRoute:
-      final product = settings.arguments as Datum;
+      final product = settings.arguments as ProductModel;
       return CupertinoPageRoute(
           builder: (_) => ProductView(
                 product: product,

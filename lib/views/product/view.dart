@@ -13,7 +13,7 @@ import '../../widgets/snak_bar.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key, required this.product});
-  final Datum product;
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final height = getHeight(context);

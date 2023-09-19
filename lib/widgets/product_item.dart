@@ -12,7 +12,7 @@ class ProductItem extends StatelessWidget {
 
   static bool sale = true;
 
-  final Datum product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class ProductItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      product.images[0] ??
+                      product.image ??
                           'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
                       height: 184,
                       width: 148,
