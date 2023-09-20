@@ -40,6 +40,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.0
   flutter_svg: ^2.0.7
+  persistent_bottom_nav_bar: ^5.0.2
   persistent_bottom_nav_bar_v2: ^4.2.8
   shared_preferences: ^2.2.1
   shimmer: ^3.0.0

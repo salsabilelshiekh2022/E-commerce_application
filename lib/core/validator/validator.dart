@@ -37,4 +37,12 @@ class Validator {
       return null;
     }
   }
+
+  static String? validateAtherField(String? value) {
+    if (value!.isEmpty) {
+      return "Field is required";
+    } else {
+      return null;
+    }
+  }
 }
