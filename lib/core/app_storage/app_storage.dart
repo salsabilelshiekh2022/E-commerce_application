@@ -1,7 +1,6 @@
-import 'package:ecommerce/core/router/routes.dart';
+import 'package:ecommerce/core/router/router.dart';
+import 'package:ecommerce/views/login/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../constants.dart';
 
 class AppStorage {
   static late SharedPreferences _preferences;
@@ -20,7 +19,8 @@ class AppStorage {
 
   static clearCache() {
     _preferences.remove('token');
-    navigatorKey.currentState!
-        .pushNamedAndRemoveUntil(AppRoutes.loginPageRoute, (_) => false);
+    // navigatorKey.currentState!
+    //     .pushNamedAndRemoveUntil(AppRoutes.loginPageRoute, (_) => false);
+    AppRouter.navigateAndPop(const LoginView());
   }
 }

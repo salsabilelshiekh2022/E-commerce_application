@@ -1,6 +1,8 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:ecommerce/views/product/products_model.dart';
+import 'package:ecommerce/views/reviews/view.dart';
 import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:ecommerce/widgets/favorite_button.dart';
@@ -119,20 +121,25 @@ class ProductView extends StatelessWidget {
                           thickness: 0.4,
                           color: grey,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 16),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              AppText(
-                                text: 'Shipping info',
+                              const AppText(
+                                text: 'Rating',
                                 fontSize: 16,
                                 color: black,
                               ),
-                              Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                color: black,
-                                size: 16,
+                              InkWell(
+                                onTap: () {
+                                  AppRouter.navigateTo(const ReviewsView());
+                                },
+                                child: const Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: black,
+                                  size: 16,
+                                ),
                               ),
                             ],
                           ),

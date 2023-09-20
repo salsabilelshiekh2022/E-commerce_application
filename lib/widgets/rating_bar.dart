@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class StarRatingBar extends StatelessWidget {
-  const StarRatingBar({super.key});
+  const StarRatingBar({super.key, this.itemCount});
+  final int? itemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class StarRatingBar extends StatelessWidget {
       minRating: 1,
       direction: Axis.horizontal,
       allowHalfRating: true,
-      itemCount: 5,
+      itemCount: itemCount ?? 5,
       itemSize: 14,
       itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
       itemBuilder: (context, _) => const Icon(

@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce/core/app_storage/app_storage.dart';
+import 'package:ecommerce/views/nav_bar/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants.dart';
 import '../../core/api_services/api_services.dart';
 import '../../core/models/user/user.dart';
-import '../../core/router/routes.dart';
+import '../../core/router/router.dart';
 import '../../widgets/snak_bar.dart';
 
 part 'state.dart';
@@ -43,8 +44,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         if (user!.status!) {
           //showSnakBar(user!.message!, success);
           await AppStorage.cacheUser(user!.data!.token!);
-          navigatorKey.currentState!
-              .pushNamedAndRemoveUntil(AppRoutes.navBarRoute, (_) => false);
+          AppRouter.navigateAndPop(const NavBarView());
         } else {
           showSnakBar(user!.message!, error);
         }
