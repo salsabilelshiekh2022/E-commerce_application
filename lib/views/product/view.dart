@@ -9,6 +9,7 @@ import 'package:ecommerce/widgets/favorite_button.dart';
 import 'package:ecommerce/widgets/loading_button.dart';
 import 'package:ecommerce/widgets/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_margin_widget/flutter_margin_widget.dart';
 
@@ -56,7 +57,7 @@ class ProductView extends StatelessWidget {
                     height: height * .5,
                     width: width,
                     fit: BoxFit.contain,
-                  ),
+                  ).animate().fade(curve: Curves.easeInOut).scale().move(),
                   const SizedBox(
                     height: 14,
                   ),
@@ -233,7 +234,7 @@ class ProductView extends StatelessWidget {
                         .cartID
                         .contains(product.id)) {
                       return AppButton(
-                        title: 'it is in cart ',
+                        title: 'Already in cart tap to remove ',
                         onTap: () {
                           CartCubit.of(context).toggleAddToCart(product.id!);
                         },

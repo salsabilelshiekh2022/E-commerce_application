@@ -3,6 +3,7 @@ import 'package:ecommerce/views/search_by_category.dart/cubit.dart';
 import 'package:ecommerce/views/search_by_category.dart/view.dart';
 import 'package:ecommerce/widgets/category_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 
 import '../../constants.dart';
@@ -78,7 +79,13 @@ class CategoriesView extends StatelessWidget {
                               color: white,
                             )
                           ]),
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(
+                            curve: Curves
+                                .easeInOut) // uses `Animate.defaultDuration`
+                        .scale() // inherits duration from fadeIn
+                        .move(delay: 300.ms, duration: 600.ms),
                     ListView.builder(
                       itemBuilder: (context, index) {
                         return Padding(
@@ -94,7 +101,13 @@ class CategoriesView extends StatelessWidget {
                                     title: categoriesNames[index]),
                               );
                             },
-                          ),
+                          )
+                              .animate()
+                              .fadeIn(
+                                  curve: Curves
+                                      .easeInOut) // uses `Animate.defaultDuration`
+                              .scale() // inherits duration from fadeIn
+                              .move(delay: 300.ms, duration: 600.ms),
                         );
                       },
                       itemCount: 5,

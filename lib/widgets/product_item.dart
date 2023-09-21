@@ -53,12 +53,11 @@ class ProductItem extends StatelessWidget {
                                 color: primaryAppColor,
                                 borderRadius: BorderRadius.circular(29)),
                             child: Align(
-                              child: AppText(
-                                text: '-${product.discount}%',
-                                fontSize: 11,
-                                color: white,
-                              ),
-                            ),
+                                child: AppText(
+                              text: '-${product.discount}%',
+                              fontSize: 11,
+                              color: white,
+                            )),
                           ),
                         )
                       : const SizedBox(),

@@ -16,8 +16,6 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = CartCubit.of(context);
-
     return OfflineBuilder(
       connectivityBuilder: (
         BuildContext context,
@@ -26,8 +24,12 @@ class CartView extends StatelessWidget {
       ) {
         final bool connected = connectivity != ConnectivityResult.none;
         if (connected) {
-          return cubit.cartItems!.isEmpty
-              ? Scaffold(
+          return BlocBuilder(
+              bloc: CartCubit.of(context),
+              builder: (context, state) {
+                final cubit = CartCubit.of(context);
+                cubit.getCartItems();
+                return Scaffold(
                   appBar: AppBar(
                       title: const AppText(
                         text: 'My Bag',
@@ -40,62 +42,68 @@ class CartView extends StatelessWidget {
                           icon: const Icon(Icons.search),
                         ),
                       ]),
-                  body: SafeArea(
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          children: [
-                            BlocBuilder(
-                              bloc: cubit,
-                              builder: (context, state) {
-                                cubit.getCartItems();
-                                return ListView.builder(
-                                  itemBuilder: (context, index) {
-                                    return DismissibleWidget(
-                                      index: index,
-                                    );
-                                  },
-                                  itemCount: cubit.cartItems!.length,
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                );
-                              },
+                  body: cubit.totalCost != 0
+                      ? SafeArea(
+                          child: SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    itemBuilder: (context, index) {
+                                      return DismissibleWidget(
+                                        index: index,
+                                      );
+                                    },
+                                    itemCount: cubit.cartItems!.length,
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                  ),
+                                  cubit.totalCost != 0
+                                      ? Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 25,
+                                            ),
+                                            const PromoCodeField(),
+                                            const SizedBox(
+                                              height: 28,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                const AppText(
+                                                  text: 'Total amount:',
+                                                  fontSize: 14,
+                                                  color: grey,
+                                                ),
+                                                AppText(
+                                                  text:
+                                                      '${cubit.totalCost.toInt()}\$',
+                                                  fontSize: 18,
+                                                  color: black,
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 70,
+                                            ),
+                                            const AppButton(title: 'CHECK OUT'),
+                                          ],
+                                        )
+                                      : const SizedBox(),
+                                ],
+                              ),
                             ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            const PromoCodeField(),
-                            const SizedBox(
-                              height: 28,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const AppText(
-                                  text: 'Total amount:',
-                                  fontSize: 14,
-                                  color: grey,
-                                ),
-                                AppText(
-                                  text: '${cubit.totalCost.toInt()}\$',
-                                  fontSize: 18,
-                                  color: black,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 70,
-                            ),
-                            const AppButton(title: 'CHECK OUT'),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              : const EmptyData();
+                          ),
+                        )
+                      : const EmptyData(),
+                );
+              });
         } else {
           return const CheckConnection();
         }

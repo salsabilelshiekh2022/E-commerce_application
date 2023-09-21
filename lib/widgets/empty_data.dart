@@ -11,7 +11,7 @@ class EmptyData extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/images/NoData.gif',
+            'assets/images/NoData2.gif',
             width: double.infinity - 100,
             height: 400,
             fit: BoxFit.cover,

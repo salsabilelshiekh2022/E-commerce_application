@@ -2,6 +2,7 @@ import 'package:ecommerce/views/home/cubit.dart';
 import 'package:ecommerce/widgets/check_connection.dart';
 import 'package:ecommerce/widgets/shimmer_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 
@@ -79,7 +80,7 @@ class HomeBody extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 17),
                                 child: ProductItem(
                                     product: cubit.saleProducts[index]),
-                              );
+                              ).animate().effect().scale().move();
                             },
                             scrollDirection: Axis.horizontal,
                             itemCount: cubit.saleProducts.length,
