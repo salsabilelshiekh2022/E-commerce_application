@@ -1,8 +1,14 @@
+import 'package:ecommerce/core/router/router.dart';
+import 'package:ecommerce/views/search_by_category.dart/cubit.dart';
+import 'package:ecommerce/views/search_by_category.dart/view.dart';
 import 'package:ecommerce/widgets/category_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 import '../../constants.dart';
 import '../../widgets/app_text.dart';
+import '../../widgets/check_connection.dart';
+import '../search/view.dart';
 
 class CategoriesView extends StatelessWidget {
   const CategoriesView({super.key});
@@ -11,75 +17,100 @@ class CategoriesView extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = getHeight(context);
     final width = getWidth(context);
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
-        title: const AppText(
-          text: 'Categories',
-          fontSize: 18,
-        ),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-          child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Container(
-                height: height * 0.123,
-                width: width,
-                decoration: BoxDecoration(
-                  color: primaryAppColor,
-                  borderRadius: BorderRadius.circular(8.0),
+
+    return OfflineBuilder(
+      connectivityBuilder: (
+        BuildContext context,
+        ConnectivityResult connectivity,
+        Widget child,
+      ) {
+        final bool connected = connectivity != ConnectivityResult.none;
+        if (connected) {
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back_ios,
                 ),
-                child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      AppText(
-                        text: 'SUMMER SALES',
-                        fontSize: 24,
-                        color: white,
-                      ),
-                      AppText(
-                        text: 'Up to 50% off',
-                        fontSize: 14,
-                        color: white,
-                      )
-                    ]),
-              ),
-              ListView.builder(
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: CategoryItem(
-                      name: categoriesNames[index],
-                      image: categoriesImages[index],
-                    ),
-                  );
+                onPressed: () {
+                  Navigator.pop(context);
                 },
-                itemCount: 5,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-              )
-            ],
-          ),
-        ),
-      )),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    AppRouter.navigateTo(SearchView());
+                  },
+                  icon: const Icon(Icons.search),
+                ),
+              ],
+              title: const AppText(
+                text: 'Categories',
+                fontSize: 18,
+              ),
+              centerTitle: true,
+            ),
+            body: SafeArea(
+                child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Container(
+                      height: height * 0.123,
+                      width: width,
+                      decoration: BoxDecoration(
+                        color: primaryAppColor,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppText(
+                              text: 'SUMMER SALES',
+                              fontSize: 24,
+                              color: white,
+                            ),
+                            AppText(
+                              text: 'Up to 50% off',
+                              fontSize: 14,
+                              color: white,
+                            )
+                          ]),
+                    ),
+                    ListView.builder(
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: CategoryItem(
+                            name: categoriesNames[index],
+                            image: categoriesImages[index],
+                            onTap: () {
+                              SearchCubit.of(context)
+                                  .getSearchData(categoriesNames[index]);
+                              AppRouter.navigateTo(
+                                SearchByCategoryView(
+                                    title: categoriesNames[index]),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      itemCount: 5,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                    )
+                  ],
+                ),
+              ),
+            )),
+          );
+        } else {
+          return const CheckConnection();
+        }
+      },
+      child: const SizedBox(),
     );
   }
 }

@@ -4,16 +4,18 @@ import '../constants.dart';
 import 'app_text.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({super.key, required this.image, required this.name});
+  const CategoryItem(
+      {super.key, required this.image, required this.name, this.onTap});
   final String image;
   final String name;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final height = getHeight(context);
     final width = getWidth(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         height: height * 0.123,
         width: width,

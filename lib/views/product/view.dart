@@ -6,12 +6,13 @@ import 'package:ecommerce/views/reviews/view.dart';
 import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:ecommerce/widgets/favorite_button.dart';
+import 'package:ecommerce/widgets/loading_button.dart';
 import 'package:ecommerce/widgets/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_margin_widget/flutter_margin_widget.dart';
 
 import '../../widgets/rating_bar.dart';
-import '../../widgets/snak_bar.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key, required this.product});
@@ -219,19 +220,33 @@ class ProductView extends StatelessWidget {
             Margin(
               margin: EdgeInsets.only(top: height * .764),
               child: Container(
-                height: height * .137,
-                width: width,
-                color: lightScaffoldBackgroundColor,
-                padding: const EdgeInsets.only(
-                    top: 20, bottom: 34, left: 16, right: 16),
-                child: AppButton(
-                  title: 'ADD TO CART',
-                  onTap: () {
-                    CartCubit.of(context).toggleAddToCart(product.id!);
-                    showSnakBar('Added To Cart', success);
-                  },
-                ),
-              ),
+                  height: height * .137,
+                  width: width,
+                  color: lightScaffoldBackgroundColor,
+                  padding: const EdgeInsets.only(
+                      top: 20, bottom: 34, left: 16, right: 16),
+                  child: BlocBuilder<CartCubit, CartState>(
+                      builder: (context, state) {
+                    if (state is CartLoading) {
+                      return const LoadingButton();
+                    } else if (CartCubit.of(context)
+                        .cartID
+                        .contains(product.id)) {
+                      return AppButton(
+                        title: 'it is in cart ',
+                        onTap: () {
+                          CartCubit.of(context).toggleAddToCart(product.id!);
+                        },
+                      );
+                    } else {
+                      return AppButton(
+                        title: 'Add to cart',
+                        onTap: () {
+                          CartCubit.of(context).toggleAddToCart(product.id!);
+                        },
+                      );
+                    }
+                  })),
             ),
           ],
         ),

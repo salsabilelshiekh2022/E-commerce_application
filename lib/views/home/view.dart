@@ -1,7 +1,9 @@
 import 'package:ecommerce/views/home/cubit.dart';
+import 'package:ecommerce/widgets/check_connection.dart';
 import 'package:ecommerce/widgets/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 import '../../constants.dart';
 import '../../widgets/header_of_list.dart';
@@ -12,17 +14,44 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+        body: SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: OfflineBuilder(
+        connectivityBuilder: (
+          BuildContext context,
+          ConnectivityResult connectivity,
+          Widget child,
+        ) {
+          final bool connected = connectivity != ConnectivityResult.none;
+          if (connected) {
+            return const HomeBody();
+          } else {
+            return const CheckConnection();
+          }
+        },
+        child: const SizedBox(),
+      ),
+    ));
+  }
+}
+
+class HomeBody extends StatelessWidget {
+  const HomeBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     final height = getHeight(context);
     final cubit = HomeCubit.of(context);
-    return BlocBuilder(
-      bloc: cubit,
-      builder: (context, state) {
-        return state is HomeLoading
-            ? const ShimmerLoading()
-            : Scaffold(
-                body: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
+
+    return Column(
+      children: [
+        BlocBuilder(
+          bloc: cubit,
+          builder: (context, state) {
+            return state is HomeLoading
+                ? const ShimmerLoading()
+                : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.network(
@@ -87,10 +116,10 @@ class HomeView extends StatelessWidget {
                         height: 30,
                       )
                     ],
-                  ),
-                ),
-              );
-      },
+                  );
+          },
+        ),
+      ],
     );
   }
 }

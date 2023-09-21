@@ -4,6 +4,7 @@ import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:ecommerce/views/home/cubit.dart';
 import 'package:ecommerce/views/nav_bar/view.dart';
 import 'package:ecommerce/views/register/view.dart';
+import 'package:ecommerce/views/search_by_category.dart/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,9 @@ void main() async {
   ));
   runApp(const MyApp());
   await AppStorage.appInitialization();
+
   token = AppStorage.getUser();
+  //print(token);
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +36,8 @@ class MyApp extends StatelessWidget {
           create: (context) => HomeCubit()..getHomeData(),
         ),
         BlocProvider(create: (context) => FavoriteCubit()..getFavorits()),
-        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => CartCubit()..getCartItems()),
+        BlocProvider(create: (context) => SearchCubit()),
       ],
       child: MaterialApp(
           title: 'Ecommerce App',

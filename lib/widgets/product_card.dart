@@ -34,11 +34,17 @@ class ProductCard extends StatelessWidget {
             ClipRRect(
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
-              child: Image.network(
-                product.image!,
-                width: width * 0.28,
-                fit: BoxFit.cover,
-              ),
+              child: product.image!.isNotEmpty
+                  ? FadeInImage.assetNetwork(
+                      placeholder: 'assets/images/loading.gif',
+                      image: product.image!,
+                      width: width * 0.28,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.asset(
+                      'assets/images/loading.gif',
+                      width: width * 0.28,
+                    ),
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -103,7 +109,7 @@ class ProductCard extends StatelessWidget {
                       Row(
                         children: [
                           AppText(
-                            text: '${product.price}\$',
+                            text: '${product.price!.toInt()}\$',
                             fontSize: 14,
                             color: black,
                           ),

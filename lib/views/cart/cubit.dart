@@ -12,21 +12,20 @@ part 'state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  List<ProductModel>? cartItems;
+  late List<ProductModel>? cartItems = [];
   Set<int> cartID = {};
-  double totalCost = 0;
+  dynamic totalCost = 0;
 
   static CartCubit of(context) => BlocProvider.of(context);
 
   Future<void> getCartItems() async {
-    emit(CartLoading());
     try {
       final response = await ApiService(Dio()).get(url: 'carts', token: token);
+      cartItems = [];
 
       List<dynamic> cartList = response.data['data']['cart_items'];
       totalCost = response.data['data']['total'];
-      print(totalCost);
-      cartItems = [];
+
       for (var item in cartList) {
         cartItems!.add(ProductModel.fromJson(item['product']));
         cartID.add(item['product']['id']);
@@ -35,9 +34,11 @@ class CartCubit extends Cubit<CartState> {
     } catch (e) {
       debugPrint(e.toString());
     }
+    emit(CartInitial());
   }
 
   Future<dynamic> toggleAddToCart(int id) async {
+    emit(CartLoading());
     try {
       await ApiService(Dio())
           .post(data: {"product_id": id}, url: 'carts', token: token);
@@ -45,16 +46,42 @@ class CartCubit extends Cubit<CartState> {
       if (cartID.contains(id)) {
         cartID.remove(id);
         //debugPrint('remove');
-        await getCartItems();
+        //await getCartItems();
         emit(RemoveFromCart());
       } else {
         cartID.add(id);
-        getCartItems();
+        //getCartItems();
         //debugPrint('add');
         emit(AddToCart());
       }
     } catch (e) {
       debugPrint(e.toString());
     }
+
+    emit(CartInitial());
   }
+
+  /*
+  Future<dynamic> toggleFavorite(int id) async {
+    try {
+      await ApiService(Dio())
+          .post(data: {"product_id": id}, url: 'favorites', token: token);
+
+      if (favoritsID.contains(id)) {
+        favoritsID.remove(id);
+        //debugPrintprint('remove');
+        //await getFavorits();
+        emit(RemoveFromFavorite());
+      } else {
+        favoritsID.add(id);
+        //getFavorits();
+        // debugPrint('add');
+        emit(AddToFavorite());
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    emit(FavoriteInitial());
+  }
+   */
 }

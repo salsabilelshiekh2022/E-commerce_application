@@ -15,10 +15,10 @@ class FavoriteButton extends StatelessWidget {
     return BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
       return GestureDetector(
         onTap: () {
+          cubit.favoritsID.contains(product.id!)
+              ? cubit.favoritsID.remove(product.id!)
+              : cubit.favoritsID.add(product.id!);
           cubit.toggleFavorite(product.id!);
-
-          // print(product.id);
-          // print(product.inFavorites);
         },
         child: Container(
           width: 36,
