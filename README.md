@@ -1,16 +1,32 @@
-# ecommerce
+# E-commerce Application 🛍
+- Flutter Ecommerce mobile app using API with many functionalities such as search for products by title and category, manage favorite item 
+  and cart.
+- BloC state management used to manage app's business logic.
 
-A new Flutter project.
+## Note
+This repository is still under development and I will continue to add more features to it.
 
-## Getting Started
+## ✨ Features
+- Easy to use
+- login and sign up user
+- Filter products by category and title.
+- Add/Remove products from the favorite products list.
+- Cart management.
+- Check the internet connection status.
+- Dark mode (Coming Soon!)
+- other features (Coming Soon!)
 
-This project is a starting point for a Flutter application.
+## 🔌 Packages
+- flutter_bloc
+- dio
+- flutter_animate
+- flutter_offline
+- shared_preferences
+- flutter_screenutil
+- shimmer
+- persistent_bottom_nav_bar
+- flutter_svg
 
-A few resources to get you started if this is your first Flutter project:
+## 📸 ScreenShots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
