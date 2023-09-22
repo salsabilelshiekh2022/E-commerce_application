@@ -28,5 +28,21 @@ This repository is still under development and I will continue to add more featu
 - flutter_svg
 
 ## 📸 ScreenShots
+| Ecommerce                                      | Application                                |
+| -----------------------------------------      | -------------------------------------------|
+| <img src="screen_shot/1.jpg" width="400">      | <img src="screen_shot/2.jpg" width="400">  |
+| <img src="screen_shot/3.jpg" width="400">      | <img src="screen_shot/4.jpg" width="400">  |
+| <img src="screen_shot/5.jpg" width="400">      | <img src="screen_shot/6.jpg" width="400">  |
+| <img src="screen_shot/7.jpg" width="400">      | <img src="screen_shot/8.jpg" width="400">  |
+| <img src="screen_shot/9.jpg" width="400">      | <img src="screen_shot/10.jpg" width="400"> |
+| <img src="screen_shot/11.jpg" width="400">     | <img src="screen_shot/12.jpg" width="400"> |
+| <img src="screen_shot/13.jpg" width="400">     | <img src="screen_shot/14.jpg" width="400"> |
+| <img src="screen_shot/15.jpg" width="400">     | <img src="screen_shot/16.jpg" width="400"> |
+| <img src="screen_shot/17.jpg" width="400">     | <img src="screen_shot/18.jpg" width="400"> |
+
+## 🎥 Video
+|Video                                          |
+|-----------------------------------------------|
+| <video src="https://github.com/salsabilelshiekh2022/E-commerce_application/blob/main/screen_shot/record.mp4" width= "400"> |
 
   
