@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants.dart';
 import '../../../core/router/router.dart';
+import '../../../widgets/app_alert.dart';
 import '../../../widgets/app_text.dart';
 import '../../product/products_model.dart';
 import '../../product/view.dart';
@@ -88,22 +89,33 @@ class CartItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.circular(18),
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Colors.black12,
-                                  offset: Offset(0, 4),
-                                  blurRadius: 4)
-                            ]),
-                        child: const Icon(
-                          Icons.remove_rounded,
-                          color: grey,
-                          size: 18,
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AppAlert(
+                                  id: product.id!,
+                                );
+                              });
+                        },
+                        child: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                              color: white,
+                              borderRadius: BorderRadius.circular(18),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    offset: Offset(0, 4),
+                                    blurRadius: 4)
+                              ]),
+                          child: const Icon(
+                            Icons.remove_rounded,
+                            color: grey,
+                            size: 18,
+                          ),
                         ),
                       ),
                       const SizedBox(

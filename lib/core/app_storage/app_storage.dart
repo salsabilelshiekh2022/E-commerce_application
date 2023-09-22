@@ -1,5 +1,5 @@
 import 'package:ecommerce/core/router/router.dart';
-import 'package:ecommerce/views/login/view.dart';
+import 'package:ecommerce/views/register/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppStorage {
@@ -21,6 +21,6 @@ class AppStorage {
     _preferences.remove('token');
     // navigatorKey.currentState!
     //     .pushNamedAndRemoveUntil(AppRoutes.loginPageRoute, (_) => false);
-    AppRouter.navigateAndPop(const LoginView());
+    AppRouter.navigateAndPop(const RegisterView());
   }
 }

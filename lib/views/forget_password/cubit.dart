@@ -10,6 +10,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   String? email;
 
   final emailController = TextEditingController();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   static ForgetPasswordCubit of(context) => BlocProvider.of(context);
 }

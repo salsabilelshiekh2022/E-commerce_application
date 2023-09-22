@@ -1,6 +1,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'cart_item.dart';
 
@@ -45,6 +46,6 @@ class DismissibleWidget extends StatelessWidget {
           product: CartCubit.of(context).cartItems![index],
         ),
       ),
-    );
+    ).animate().effect().scale().move();
   }
 }

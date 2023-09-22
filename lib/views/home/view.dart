@@ -103,10 +103,13 @@ class HomeBody extends StatelessWidget {
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
                               return Padding(
-                                padding: const EdgeInsets.only(right: 17),
-                                child: ProductItem(
-                                    product: cubit.newProducts[index]),
-                              );
+                                      padding: const EdgeInsets.only(right: 17),
+                                      child: ProductItem(
+                                          product: cubit.newProducts[index]))
+                                  .animate()
+                                  .effect()
+                                  .scale()
+                                  .move();
                             },
                             scrollDirection: Axis.horizontal,
                             itemCount: cubit.newProducts.length,

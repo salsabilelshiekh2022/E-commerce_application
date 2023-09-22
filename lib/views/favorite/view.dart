@@ -1,12 +1,17 @@
+import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/views/favorite/cubit.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:ecommerce/widgets/empty_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 
+import '../../core/router/router.dart';
 import '../../widgets/check_connection.dart';
 import '../../widgets/product_card.dart';
+import '../product/products_model.dart';
+import '../product/view.dart';
 import 'units/filter_bar.dart';
 import 'units/list_of_items.dart';
 
@@ -16,7 +21,6 @@ class FavoriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = FavoriteCubit.of(context);
-
     return OfflineBuilder(
       connectivityBuilder: (
         BuildContext context,
@@ -53,20 +57,46 @@ class FavoriteView extends StatelessWidget {
                                 children: [
                                   const ListOfItems(),
                                   const FilterBar(),
-                                  ListView.builder(
-                                    itemBuilder: ((context, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(top: 16),
-                                        child: ProductCard(
-                                          product: cubit.favorites![index],
+                                  cubit.showGridView
+                                      ? GridView.builder(
+                                          gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 2),
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 16.0),
+                                              child: GridItem(
+                                                product:
+                                                    cubit.favorites![index],
+                                              ),
+                                            );
+                                          },
+                                          itemCount: cubit.favorites!.length,
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                        )
+                                      : ListView.builder(
+                                          itemBuilder: ((context, index) {
+                                            return Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 16),
+                                              child: ProductCard(
+                                                product:
+                                                    cubit.favorites![index],
+                                              )
+                                                  .animate()
+                                                  .effect()
+                                                  .scale()
+                                                  .move(),
+                                            );
+                                          }),
+                                          itemCount: cubit.favorites!.length,
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
                                         ),
-                                      );
-                                    }),
-                                    itemCount: cubit.favorites!.length,
-                                    shrinkWrap: true,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                  ),
                                   const SizedBox(
                                     height: 20,
                                   ),
@@ -83,6 +113,132 @@ class FavoriteView extends StatelessWidget {
         }
       },
       child: const SizedBox(),
+    );
+  }
+}
+
+class GridItem extends StatelessWidget {
+  const GridItem({super.key, required this.product});
+
+  //static bool sale = true;
+
+  final ProductModel product;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        AppRouter.navigateTo(
+          ProductView(product: product),
+        );
+      },
+      child: SizedBox(
+        width: 164,
+        height: 281,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 100,
+              child: Stack(children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: FadeInImage.assetNetwork(
+                    image: product.image!,
+                    placeholder: 'assets/images/loading2.gif',
+                    height: 100,
+                    width: 148,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                product.discount != 0
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 8, left: 9),
+                        child: Container(
+                          width: 40,
+                          height: 24,
+                          decoration: BoxDecoration(
+                              color: primaryAppColor,
+                              borderRadius: BorderRadius.circular(29)),
+                          child: Align(
+                              child: AppText(
+                            text: '-${product.discount}%',
+                            fontSize: 11,
+                            color: white,
+                          )),
+                        ),
+                      )
+                    : const SizedBox(),
+                Positioned(
+                  top: 65,
+                  left: 105,
+                  child: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                        color: primaryAppColor,
+                        borderRadius: BorderRadius.circular(18),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black12,
+                              offset: Offset(0, 4),
+                              blurRadius: 4)
+                        ]),
+                    child: const Icon(
+                      Icons.shopping_bag_rounded,
+                      color: white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+            const SizedBox(
+              height: 3,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 14),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: AppText(
+                  text: 'Amazon',
+                  fontSize: 11,
+                  color: grey,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const SizedBox(
+              height: 3,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: AppText(
+                  text: '${product.name!.substring(0, 10)} ...',
+                  fontSize: 14,
+                  color: black,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 3,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: AppText(
+                  text: '${product.price}\$',
+                  fontSize: 14,
+                  color: black,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

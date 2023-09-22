@@ -38,6 +38,7 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
         }, url: 'change-password', token: token);
 
         if (response.data!['status']) {
+          AppRouter.pop();
           showSnakBar('Password change successfully', success);
           debugPrint('yes');
         } else {

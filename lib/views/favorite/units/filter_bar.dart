@@ -1,5 +1,7 @@
+import 'package:ecommerce/views/favorite/cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants.dart';
 import '../../../widgets/app_text.dart';
@@ -43,13 +45,25 @@ class FilterBar extends StatelessWidget {
         const SizedBox(
           width: 15,
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.grid_view_sharp,
-            size: 18,
-            color: black,
-          ),
+        BlocBuilder<FavoriteCubit, FavoriteState>(
+          builder: (context, state) {
+            return IconButton(
+              onPressed: () {
+                FavoriteCubit.of(context).showGrid();
+              },
+              icon: FavoriteCubit.of(context).showGridView
+                  ? const Icon(
+                      Icons.list,
+                      size: 24,
+                      color: black,
+                    )
+                  : const Icon(
+                      Icons.grid_view_sharp,
+                      size: 18,
+                      color: black,
+                    ),
+            );
+          },
         ),
       ],
     );

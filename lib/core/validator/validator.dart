@@ -32,7 +32,7 @@ class Validator {
     if (value!.isEmpty) {
       return "Field is required";
     } else if (value.length < 6) {
-      return "Password must be at least 8 characters";
+      return "Password must be at least 6 characters";
     } else {
       return null;
     }

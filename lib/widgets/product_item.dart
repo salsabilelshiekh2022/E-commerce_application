@@ -25,7 +25,7 @@ class ProductItem extends StatelessWidget {
       },
       child: SizedBox(
         width: 150,
-        height: 270,
+        height: 380,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

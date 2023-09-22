@@ -11,13 +11,14 @@ class AppTextFormField extends StatelessWidget {
     this.controller,
     this.onChange,
     this.onSubmitted,
-    this.secure,
+    this.secure = false,
     this.focusNode,
     this.onEditingComplete,
     this.textInputAction,
     this.enable = true,
+    this.keyBoardType,
   });
-  final bool? secure;
+  final bool secure;
   final String? hintText;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
@@ -26,6 +27,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String?)? onSubmitted;
   final FocusNode? focusNode;
   final bool? enable;
+  final TextInputType? keyBoardType;
 
   final VoidCallback? onEditingComplete;
   final TextInputAction? textInputAction;
@@ -35,6 +37,8 @@ class AppTextFormField extends StatelessWidget {
     return Material(
       borderRadius: BorderRadiusDirectional.circular(4),
       child: TextFormField(
+        keyboardType: keyBoardType,
+        obscureText: secure,
         enabled: enable,
         onSaved: onSave,
         onFieldSubmitted: onSubmitted,

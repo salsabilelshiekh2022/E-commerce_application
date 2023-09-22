@@ -13,8 +13,9 @@ part 'state.dart';
 class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit() : super(FavoriteInitial());
 
-  List<ProductModel>? favorites;
+  List<ProductModel>? favorites = [];
   Set<int> favoritsID = {};
+  bool showGridView = false;
 
   static FavoriteCubit of(context) => BlocProvider.of(context);
 
@@ -58,5 +59,17 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       debugPrint(e.toString());
     }
     emit(FavoriteInitial());
+  }
+
+  showGrid() {
+    if (showGridView) {
+      showGridView = false;
+
+      emit(ShowList());
+    } else {
+      showGridView = true;
+
+      emit(ShowGridView());
+    }
   }
 }

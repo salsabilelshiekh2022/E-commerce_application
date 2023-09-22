@@ -34,6 +34,7 @@ class RegisterView extends StatelessWidget {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Form(
+                  autovalidateMode: cubit.autovalidateMode,
                   key: cubit.formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +59,7 @@ class RegisterView extends StatelessWidget {
                               .requestFocus(cubit.emailFocusNode);
                         },
                         hintText: 'Name',
+                        keyBoardType: TextInputType.text,
                         validator: (value) {
                           return Validator.validateName(value);
                         },
@@ -69,6 +71,7 @@ class RegisterView extends StatelessWidget {
                         onSave: (data) {
                           cubit.email = data;
                         },
+                        keyBoardType: TextInputType.emailAddress,
                         controller: cubit.emailController,
                         focusNode: cubit.emailFocusNode,
                         textInputAction: TextInputAction.next,
@@ -95,6 +98,7 @@ class RegisterView extends StatelessWidget {
                           FocusScope.of(context)
                               .requestFocus(cubit.passwordFocusNode);
                         },
+                        keyBoardType: TextInputType.phone,
                         hintText: 'Phone',
                         validator: (value) {
                           return Validator.validatePhone(value);
@@ -107,6 +111,7 @@ class RegisterView extends StatelessWidget {
                         onSave: (data) {
                           cubit.password = data;
                         },
+                        keyBoardType: TextInputType.visiblePassword,
                         secure: true,
                         controller: cubit.passwordController,
                         focusNode: cubit.passwordFocusNode,

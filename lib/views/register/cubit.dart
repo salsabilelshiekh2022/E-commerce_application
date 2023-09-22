@@ -26,6 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   final nameFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final phoneFocuseNode = FocusNode();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   static RegisterCubit of(context) => BlocProvider.of(context);
 
@@ -53,6 +54,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       }
 
       emit(RegisterInitial());
+    } else {
+      autovalidateMode = AutovalidateMode.always;
     }
   }
 }

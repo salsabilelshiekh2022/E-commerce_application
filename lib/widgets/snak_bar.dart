@@ -25,6 +25,7 @@ void showSnakBar(String msg, Color color) {
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
     ),
+    duration: const Duration(seconds: 1),
     backgroundColor: color,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   );

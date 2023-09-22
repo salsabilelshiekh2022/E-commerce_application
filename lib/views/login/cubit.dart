@@ -25,6 +25,8 @@ class LoginCubit extends Cubit<LoginState> {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   static LoginCubit of(context) => BlocProvider.of(context);
 
   Future<void> login() async {
@@ -44,13 +46,17 @@ class LoginCubit extends Cubit<LoginState> {
           await AppStorage.cacheUser(user!.data!.token!);
           AppRouter.navigateAndPop(const NavBarView());
         } else {
-          showSnakBar(user!.message!, error);
+          showSnakBar(
+              'This email doesn\'t match of any users try to Register and then try again',
+              error);
         }
       } catch (e) {
         showSnakBar(user!.message!, error);
       }
 
       emit(LoginInitial());
+    } else {
+      autovalidateMode = AutovalidateMode.always;
     }
   }
 }

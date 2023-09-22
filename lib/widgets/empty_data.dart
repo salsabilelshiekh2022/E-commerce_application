@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class EmptyData extends StatelessWidget {
   const EmptyData({super.key});
@@ -31,11 +31,7 @@ class EmptyData extends StatelessWidget {
           ),
           const Text(
             "Sorry,You don't have any items at this time...",
-          ),
-          // .animate()
-          // .fadeIn() // uses `Animate.defaultDuration`
-          // .scale() // inherits duration from fadeIn
-          // .move(delay: 300.ms, duration: 600.ms),
+          ).animate().fadeIn().scale().move(delay: 300.ms, duration: 600.ms),
         ],
       ),
     );

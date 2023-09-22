@@ -14,3 +14,7 @@ final class GetFavorites extends FavoriteState {}
 final class AddToFavorite extends FavoriteState {}
 
 final class RemoveFromFavorite extends FavoriteState {}
+
+final class ShowGridView extends FavoriteState {}
+
+final class ShowList extends FavoriteState {}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class CheckConnection extends StatelessWidget {
   const CheckConnection({super.key});
@@ -34,11 +34,11 @@ class CheckConnection extends StatelessWidget {
           ),
           const Text(
             "Check your connection, then refresh the page.. ",
-          ),
-          // .animate()
-          // .fadeIn() // uses `Animate.defaultDuration`
-          // .scale() // inherits duration from fadeIn
-          // .move(delay: 300.ms, duration: 600.ms),
+          )
+              .animate()
+              .fadeIn() // uses `Animate.defaultDuration`
+              .scale() // inherits duration from fadeIn
+              .move(delay: 300.ms, duration: 600.ms),
         ],
       ),
     );

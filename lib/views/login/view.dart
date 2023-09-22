@@ -43,6 +43,7 @@ class LoginView extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 child: Form(
                   key: cubit.formKey,
+                  autovalidateMode: cubit.autovalidateMode,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -58,6 +59,7 @@ class LoginView extends StatelessWidget {
                         onSave: (data) {
                           cubit.email = data;
                         },
+                        keyBoardType: TextInputType.emailAddress,
                         controller: cubit.emailController,
                         focusNode: cubit.emailFocusNode,
                         textInputAction: TextInputAction.next,
@@ -77,6 +79,7 @@ class LoginView extends StatelessWidget {
                         onSave: (data) {
                           cubit.password = data;
                         },
+                        keyBoardType: TextInputType.visiblePassword,
                         secure: true,
                         controller: cubit.passwordController,
                         focusNode: cubit.passwordFocusNode,

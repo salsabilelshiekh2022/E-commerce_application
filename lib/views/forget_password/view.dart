@@ -36,6 +36,7 @@ class ForgetPasswordView extends StatelessWidget {
                   vertical: height * .0418, horizontal: 14.0),
               child: Form(
                 key: cubit.formKey,
+                autovalidateMode: cubit.autovalidateMode,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -72,6 +73,8 @@ class ForgetPasswordView extends StatelessWidget {
                       onTap: () {
                         if (cubit.formKey.currentState!.validate()) {
                           cubit.formKey.currentState!.save();
+                        } else {
+                          cubit.autovalidateMode = AutovalidateMode.always;
                         }
                       },
                     ),
