@@ -41,8 +41,10 @@ This repository is still under development and I will continue to add more featu
 | <img src="screen_shot/17.jpg" width="400">     | <img src="screen_shot/18.jpg" width="400"> |
 
 ## 🎥 Video
+<!---
 |Video                                          |
 |-----------------------------------------------|
-| <video src="https://github.com/salsabilelshiekh2022/E-commerce_application/blob/main/screen_shot/record.mp4" width= "400"> |
+| <video src="https://github.com/salsabilelshiekh2022/E-commerce_application/blob/main/screen_shot/record.mp4" width=300>|
+-->
 
   
