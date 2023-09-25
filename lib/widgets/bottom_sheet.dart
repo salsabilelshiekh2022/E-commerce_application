@@ -57,7 +57,6 @@ class ShowBottomSheet extends StatelessWidget {
                             onSave: (data) {
                               cubit.oldPassword = data;
                             },
-                            controller: cubit.oldPasswordController,
                             focusNode: cubit.oldPasswordFocusNode,
                             textInputAction: TextInputAction.next,
                             onEditingComplete: () {
@@ -92,7 +91,6 @@ class ShowBottomSheet extends StatelessWidget {
                             onSave: (data) {
                               cubit.newPassword = data;
                             },
-                            controller: cubit.newPasswordController,
                             focusNode: cubit.newPasswordFocusNode,
                             textInputAction: TextInputAction.next,
                             onEditingComplete: () {
@@ -111,12 +109,11 @@ class ShowBottomSheet extends StatelessWidget {
                             onSave: (data) {
                               cubit.comfirmPassword = data;
                             },
-                            controller: cubit.comfirmPasswordController,
                             focusNode: cubit.comfirmPasswordFocusNode,
                             textInputAction: TextInputAction.done,
                             validator: (value) {
                               if (value!.isEmpty) return 'Field is required';
-                              if (value != cubit.newPasswordController.text) {
+                              if (value != cubit.newPassword) {
                                 return 'Password dosn\'t match';
                               } else {
                                 return null;

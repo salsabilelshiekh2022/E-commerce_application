@@ -60,7 +60,6 @@ class LoginView extends StatelessWidget {
                           cubit.email = data;
                         },
                         keyBoardType: TextInputType.emailAddress,
-                        controller: cubit.emailController,
                         focusNode: cubit.emailFocusNode,
                         textInputAction: TextInputAction.next,
                         onEditingComplete: () {
@@ -81,7 +80,6 @@ class LoginView extends StatelessWidget {
                         },
                         keyBoardType: TextInputType.visiblePassword,
                         secure: true,
-                        controller: cubit.passwordController,
                         focusNode: cubit.passwordFocusNode,
                         textInputAction: TextInputAction.done,
                         hintText: 'Password',

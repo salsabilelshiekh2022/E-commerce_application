@@ -28,17 +28,39 @@ class Validator {
     }
   }
 
-  static String? validatePassword(String? value) {
-    if (value!.isEmpty) {
-      return "Field is required";
-    } else if (value.length < 6) {
-      return "Password must be at least 6 characters";
+  // static String? validatePassword(String? value) {
+  //   if (value!.isEmpty) {
+  //     return "Field is required";
+  //   } else if (value.length < 6) {
+  //     return "Password must be at least 6 characters";
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
+  static bool passwordValidate(String pass) {
+    String password = pass.trim();
+    if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(password)) {
+      return true;
     } else {
-      return null;
+      return false;
     }
   }
 
-  static String? validateAtherField(String? value) {
+  static String? validatePassword(String? value) {
+    if (value!.isEmpty) {
+      return 'Field is required';
+    } else {
+      bool result = passwordValidate(value);
+      if (result) {
+        return null;
+      } else {
+        return "Your password should contain capital, small, special characters";
+      }
+    }
+  }
+
+  static String? validateAnotherField(String? value) {
     if (value!.isEmpty) {
       return "Field is required";
     } else {

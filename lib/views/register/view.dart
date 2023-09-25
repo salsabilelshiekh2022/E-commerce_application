@@ -51,7 +51,6 @@ class RegisterView extends StatelessWidget {
                         onSave: (data) {
                           cubit.name = data;
                         },
-                        controller: cubit.nameController,
                         focusNode: cubit.nameFocusNode,
                         textInputAction: TextInputAction.next,
                         onEditingComplete: () {
@@ -72,7 +71,6 @@ class RegisterView extends StatelessWidget {
                           cubit.email = data;
                         },
                         keyBoardType: TextInputType.emailAddress,
-                        controller: cubit.emailController,
                         focusNode: cubit.emailFocusNode,
                         textInputAction: TextInputAction.next,
                         onEditingComplete: () {
@@ -91,7 +89,6 @@ class RegisterView extends StatelessWidget {
                         onSave: (data) {
                           cubit.phone = data;
                         },
-                        controller: cubit.phoneController,
                         focusNode: cubit.phoneFocuseNode,
                         textInputAction: TextInputAction.next,
                         onEditingComplete: () {
@@ -113,7 +110,6 @@ class RegisterView extends StatelessWidget {
                         },
                         keyBoardType: TextInputType.visiblePassword,
                         secure: true,
-                        controller: cubit.passwordController,
                         focusNode: cubit.passwordFocusNode,
                         textInputAction: TextInputAction.done,
                         hintText: 'Password',

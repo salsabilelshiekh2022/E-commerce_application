@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:ecommerce/views/product/view.dart';
 import 'package:ecommerce/widgets/rating_bar.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class ProductItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     child: FadeInImage.assetNetwork(
                       image: product.image!,
-                      placeholder: 'assets/images/loading2.gif',
+                      placeholder: AppAssets.itemLoading,
                       height: 184,
                       width: 148,
                       fit: BoxFit.fill,

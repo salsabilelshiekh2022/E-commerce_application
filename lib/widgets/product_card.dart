@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/views/favorite/cubit.dart';
 import 'package:flutter/material.dart';
@@ -36,13 +37,13 @@ class ProductCard extends StatelessWidget {
                   topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
               child: product.image!.isNotEmpty
                   ? FadeInImage.assetNetwork(
-                      placeholder: 'assets/images/loading.gif',
+                      placeholder: AppAssets.loading,
                       image: product.image!,
                       width: width * 0.28,
                       fit: BoxFit.cover,
                     )
                   : Image.asset(
-                      'assets/images/loading.gif',
+                      AppAssets.loading,
                       width: width * 0.28,
                     ),
             ),

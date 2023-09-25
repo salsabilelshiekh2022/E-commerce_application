@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/models/user/user.dart';
 import '../../core/router/router.dart';
-import '../../widgets/snak_bar.dart';
+import '../../widgets/snack_bar.dart';
 
 part 'state.dart';
 
@@ -20,8 +20,6 @@ class LoginCubit extends Cubit<LoginState> {
   final GlobalKey<FormState> formKey = GlobalKey();
   String? email, password;
 
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
@@ -35,10 +33,8 @@ class LoginCubit extends Cubit<LoginState> {
     if (formKey.currentState!.validate()) {
       emit(LoginLoading());
       try {
-        final response = await ApiService(Dio()).post(data: {
-          "email": emailController.text,
-          "password": passwordController.text
-        }, url: 'login');
+        final response = await ApiService(Dio())
+            .post(data: {"email": email!, "password": password!}, url: 'login');
         user = User.fromJson(response.data);
         if (user!.status!) {
           //showSnakBar(user!.message!, success);
@@ -46,12 +42,12 @@ class LoginCubit extends Cubit<LoginState> {
           await AppStorage.cacheUser(user!.data!.token!);
           AppRouter.navigateAndPop(const NavBarView());
         } else {
-          showSnakBar(
+          showSnackBar(
               'This email doesn\'t match of any users try to Register and then try again',
               error);
         }
       } catch (e) {
-        showSnakBar(user!.message!, error);
+        showSnackBar(user!.message!, error);
       }
 
       emit(LoginInitial());

@@ -1,10 +1,7 @@
 part of 'cubit.dart';
 
-sealed class HomeState extends Equatable {
+sealed class HomeState {
   const HomeState();
-
-  @override
-  List<Object> get props => [];
 }
 
 final class HomeInitial extends HomeState {}

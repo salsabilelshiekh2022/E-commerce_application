@@ -43,7 +43,7 @@ class AddingAddressView extends StatelessWidget {
                   children: [
                     AppTextFormField(
                       validator: (value) {
-                        return Validator.validateAtherField(value);
+                        return Validator.validateAnotherField(value);
                       },
                       hintText: 'Full name',
                       focusNode: cubit.nameFocusNode,
@@ -58,7 +58,7 @@ class AddingAddressView extends StatelessWidget {
                     ),
                     AppTextFormField(
                       validator: (value) {
-                        return Validator.validateAtherField(value);
+                        return Validator.validateAnotherField(value);
                       },
                       focusNode: cubit.addressFocusNode,
                       textInputAction: TextInputAction.next,
@@ -73,7 +73,7 @@ class AddingAddressView extends StatelessWidget {
                     ),
                     AppTextFormField(
                       validator: (value) {
-                        return Validator.validateAtherField(value);
+                        return Validator.validateAnotherField(value);
                       },
                       focusNode: cubit.cityFocusNode,
                       textInputAction: TextInputAction.next,
@@ -88,7 +88,7 @@ class AddingAddressView extends StatelessWidget {
                     ),
                     AppTextFormField(
                       validator: (value) {
-                        return Validator.validateAtherField(value);
+                        return Validator.validateAnotherField(value);
                       },
                       focusNode: cubit.regionFocusNode,
                       textInputAction: TextInputAction.next,
@@ -103,7 +103,7 @@ class AddingAddressView extends StatelessWidget {
                     ),
                     AppTextFormField(
                       validator: (value) {
-                        return Validator.validateAtherField(value);
+                        return Validator.validateAnotherField(value);
                       },
                       focusNode: cubit.zipCodeFocusNode,
                       textInputAction: TextInputAction.next,
@@ -118,7 +118,7 @@ class AddingAddressView extends StatelessWidget {
                     ),
                     AppTextFormField(
                       validator: (value) {
-                        return Validator.validateAtherField(value);
+                        return Validator.validateAnotherField(value);
                       },
                       focusNode: cubit.countryFocusNode,
                       textInputAction: TextInputAction.done,

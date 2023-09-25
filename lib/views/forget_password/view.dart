@@ -58,7 +58,6 @@ class ForgetPasswordView extends StatelessWidget {
                       onSave: (data) {
                         cubit.email = data;
                       },
-                      controller: cubit.emailController,
                       textInputAction: TextInputAction.done,
                       hintText: 'Email',
                       validator: (value) {

@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -14,7 +15,7 @@ class CheckConnection extends StatelessWidget {
             height: 150,
           ),
           Image.asset(
-            'assets/images/NoConnection2.gif',
+            AppAssets.noConnection,
             width: double.infinity - 100,
             height: 400,
             fit: BoxFit.cover,

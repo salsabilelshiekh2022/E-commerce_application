@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -11,7 +12,7 @@ class EmptyData extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/images/NoData2.gif',
+            AppAssets.noData,
             width: double.infinity - 100,
             height: 400,
             fit: BoxFit.cover,

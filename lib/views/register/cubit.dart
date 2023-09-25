@@ -8,7 +8,7 @@ import '../../constants.dart';
 import '../../core/api_services/api_services.dart';
 import '../../core/models/user/user.dart';
 import '../../core/router/router.dart';
-import '../../widgets/snak_bar.dart';
+import '../../widgets/snack_bar.dart';
 
 part 'state.dart';
 
@@ -18,10 +18,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   final GlobalKey<FormState> formKey = GlobalKey();
   String? email, password, name, phone;
 
-  final emailController = TextEditingController();
-  final nameController = TextEditingController();
-  final passwordController = TextEditingController();
-  final phoneController = TextEditingController();
   final emailFocusNode = FocusNode();
   final nameFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
@@ -36,10 +32,10 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterLoading());
       try {
         final response = await ApiService(Dio()).post(data: {
-          "email": emailController.text,
-          "password": passwordController.text,
-          "name": nameController.text,
-          "phone": phoneController.text,
+          "email": email!,
+          "password": password!,
+          "name": name!,
+          "phone": phone!,
         }, url: 'register');
         user = User.fromJson(response.data);
         if (user!.status!) {
@@ -47,10 +43,10 @@ class RegisterCubit extends Cubit<RegisterState> {
           await AppStorage.cacheUser(user!.data!.token!);
           AppRouter.navigateAndPop(const NavBarView());
         } else {
-          showSnakBar(user!.message!, error);
+          showSnackBar(user!.message!, error);
         }
       } catch (e) {
-        showSnakBar(user!.message!, error);
+        showSnackBar(user!.message!, error);
       }
 
       emit(RegisterInitial());
