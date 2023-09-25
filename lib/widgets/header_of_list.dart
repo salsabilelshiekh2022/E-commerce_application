@@ -1,6 +1,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HeaderOfList extends StatelessWidget {
   const HeaderOfList({super.key, required this.title, required this.subTitle});
@@ -20,7 +21,7 @@ class HeaderOfList extends StatelessWidget {
               AppText(
                 text: title,
                 color: black,
-                fontSize: 34,
+                fontSize: 34.sp,
                 fontWeight: FontWeight.bold,
               ),
               const AppText(

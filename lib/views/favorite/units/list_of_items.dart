@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants.dart';
 import '../../../widgets/app_text.dart';
@@ -9,7 +10,7 @@ class ListOfItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 30,
+      height: 30.h,
       child: ListView.builder(
           itemCount: itemsName.length,
           scrollDirection: Axis.horizontal,
@@ -17,8 +18,8 @@ class ListOfItems extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(right: 16),
               child: Container(
-                width: 100,
-                height: 30,
+                width: 100.w,
+                height: 30.h,
                 decoration: BoxDecoration(
                   color: black,
                   borderRadius: BorderRadius.circular(29),

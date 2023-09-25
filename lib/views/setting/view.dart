@@ -1,6 +1,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/validator/validator.dart';
 import '../../widgets/app_text.dart';
@@ -41,16 +42,16 @@ class SettingView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 32,
+                SizedBox(
+                  height: 32.h,
                 ),
                 const AppText(
                   text: 'Personal Information',
                   fontSize: 16,
                   color: black,
                 ),
-                const SizedBox(
-                  height: 21,
+                SizedBox(
+                  height: 21.h,
                 ),
                 AppTextFormField(
                   validator: (value) {
@@ -58,8 +59,8 @@ class SettingView extends StatelessWidget {
                   },
                   hintText: 'Full name',
                 ),
-                const SizedBox(
-                  height: 21,
+                SizedBox(
+                  height: 21.h,
                 ),
                 AppTextFormField(
                   validator: (value) {
@@ -67,8 +68,8 @@ class SettingView extends StatelessWidget {
                   },
                   hintText: 'Date of birth',
                 ),
-                const SizedBox(
-                  height: 52,
+                SizedBox(
+                  height: 52.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,23 +99,23 @@ class SettingView extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 21,
+                SizedBox(
+                  height: 21.h,
                 ),
                 const AppTextFormField(
                   hintText: '*********',
                   enable: false,
                 ),
-                const SizedBox(
-                  height: 55,
+                SizedBox(
+                  height: 55.h,
                 ),
                 const AppText(
                   text: 'Notifications',
                   fontSize: 16,
                   color: black,
                 ),
-                const SizedBox(
-                  height: 32,
+                SizedBox(
+                  height: 32.h,
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,8 +127,8 @@ class SettingView extends StatelessWidget {
                     SwitchButton(),
                   ],
                 ),
-                const SizedBox(
-                  height: 32,
+                SizedBox(
+                  height: 32.h,
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -139,8 +140,8 @@ class SettingView extends StatelessWidget {
                     SwitchButton(),
                   ],
                 ),
-                const SizedBox(
-                  height: 32,
+                SizedBox(
+                  height: 32.h,
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

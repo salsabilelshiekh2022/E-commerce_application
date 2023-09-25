@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptyData extends StatelessWidget {
   const EmptyData({super.key});
@@ -13,8 +14,8 @@ class EmptyData extends StatelessWidget {
         children: [
           Image.asset(
             AppAssets.noData,
-            width: double.infinity - 100,
-            height: 400,
+            width: double.infinity - 100.w,
+            height: 400.h,
             fit: BoxFit.cover,
           ),
           const SizedBox(

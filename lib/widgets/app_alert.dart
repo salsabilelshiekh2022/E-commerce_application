@@ -1,6 +1,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../views/cart/cubit.dart';
 
@@ -38,8 +39,8 @@ class AppAlert extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 child: Container(
-                  width: 90,
-                  height: 45,
+                  width: 90.w,
+                  height: 45.h,
                   decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(.1),
                       borderRadius: BorderRadius.circular(12)),
@@ -52,8 +53,8 @@ class AppAlert extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                width: 25,
+              SizedBox(
+                width: 25.w,
               ),
               InkWell(
                 onTap: () {
@@ -61,8 +62,8 @@ class AppAlert extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 child: Container(
-                  width: 90,
-                  height: 45,
+                  width: 90.w,
+                  height: 45.h,
                   decoration: BoxDecoration(
                       color: primaryAppColor,
                       borderRadius: BorderRadius.circular(12)),
@@ -76,10 +77,7 @@ class AppAlert extends StatelessWidget {
                 ),
               ),
             ],
-          )..animate()
-              .fadeIn() // uses `Animate.defaultDuration`
-              .scale() // inherits duration from fadeIn
-              .move(delay: 300.ms, duration: 600.ms),
+          )..animate().fadeIn().scale().move(delay: 300.ms, duration: 600.ms),
         )
       ],
     );

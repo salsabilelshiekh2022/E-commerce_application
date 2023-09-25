@@ -3,6 +3,7 @@ import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:ecommerce/views/product/view.dart';
 import 'package:ecommerce/widgets/rating_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/router/router.dart';
 import '../views/product/products_model.dart';
@@ -39,8 +40,8 @@ class ProductItem extends StatelessWidget {
                     child: FadeInImage.assetNetwork(
                       image: product.image!,
                       placeholder: AppAssets.itemLoading,
-                      height: 184,
-                      width: 148,
+                      height: 184.h,
+                      width: 148.w,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -63,8 +64,8 @@ class ProductItem extends StatelessWidget {
                         )
                       : const SizedBox(),
                   Positioned(
-                      top: 164,
-                      left: 112,
+                      top: 164.h,
+                      left: 112.w,
                       child: FavoriteButton(
                         product: product,
                       )),

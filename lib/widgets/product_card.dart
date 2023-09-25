@@ -2,6 +2,7 @@ import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/views/favorite/cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../views/product/products_model.dart';
 
 import '../constants.dart';
@@ -65,8 +66,8 @@ class ProductCard extends StatelessWidget {
                             color: grey,
                             fontSize: 11,
                           ),
-                          const SizedBox(
-                            width: 160,
+                          SizedBox(
+                            width: 160.w,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -86,11 +87,11 @@ class ProductCard extends StatelessWidget {
                       ),
                       AppText(
                         text: product.name!.substring(0, 10),
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         color: black,
                       ),
-                      const SizedBox(
-                        height: 6,
+                      SizedBox(
+                        height: 6.h,
                       ),
                       RichText(
                         text: const TextSpan(
@@ -128,13 +129,13 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
                   Positioned(
-                    top: 45,
-                    left: 180,
+                    top: 45.h,
+                    left: 180.w,
                     child: GestureDetector(
                       onTap: () {},
                       child: Container(
-                        width: 36,
-                        height: 36,
+                        width: 36.w,
+                        height: 36.h,
                         decoration: BoxDecoration(
                             color: primaryAppColor,
                             borderRadius: BorderRadius.circular(18),

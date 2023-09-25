@@ -7,6 +7,7 @@ import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/check_connection.dart';
 import '../../widgets/profile_section.dart';
@@ -55,11 +56,11 @@ class ProfileView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(32),
+                          borderRadius: BorderRadius.circular(32.h),
                           child: Image.network(
                             'https://i.pinimg.com/564x/8c/8e/cb/8c8ecbf422f590259832b5ececfdda1d.jpg',
-                            width: 64,
-                            height: 64,
+                            width: 64.w,
+                            height: 64.h,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -83,8 +84,8 @@ class ProfileView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 28,
+                    SizedBox(
+                      height: 28.h,
                     ),
                     const ProfileSection(
                       title: 'My orders',

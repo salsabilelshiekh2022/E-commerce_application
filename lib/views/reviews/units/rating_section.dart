@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants.dart';
 import '../../../widgets/app_text.dart';
@@ -10,7 +11,7 @@ class RatingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
@@ -18,13 +19,13 @@ class RatingSection extends StatelessWidget {
           children: [
             AppText(
               text: '4.3',
-              fontSize: 34,
+              fontSize: 34.sp,
               color: black,
             ),
             SizedBox(
-              height: 16,
+              height: 16.h,
             ),
-            AppText(
+            const AppText(
               text: '23 ratings',
               color: grey,
               fontSize: 14,
@@ -32,9 +33,9 @@ class RatingSection extends StatelessWidget {
           ],
         ),
         SizedBox(
-          width: 28,
+          width: 28.w,
         ),
-        Column(
+        const Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -66,68 +67,68 @@ class RatingSection extends StatelessWidget {
           ],
         ),
         SizedBox(
-          width: 3,
+          width: 3.w,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RatingLine(width: 114),
+            RatingLine(width: 114.w),
             SizedBox(
-              height: 14,
+              height: 14.h,
             ),
-            RatingLine(width: 40),
+            RatingLine(width: 40.w),
             SizedBox(
-              height: 14,
+              height: 14.h,
             ),
-            RatingLine(width: 29),
+            RatingLine(width: 29.w),
             SizedBox(
-              height: 14,
+              height: 14.h,
             ),
-            RatingLine(width: 15),
+            RatingLine(width: 15.w),
             SizedBox(
-              height: 14,
+              height: 14.h,
             ),
-            RatingLine(width: 8)
+            RatingLine(width: 8.w)
           ],
         ),
         SizedBox(
-          width: 12,
+          width: 12.w,
         ),
         Column(
           children: [
-            AppText(
+            const AppText(
               text: '12',
               color: grey,
               fontSize: 14,
             ),
             SizedBox(
-              height: 8,
+              height: 8.h,
             ),
-            AppText(
+            const AppText(
               text: '5',
               color: grey,
               fontSize: 14,
             ),
             SizedBox(
-              height: 8,
+              height: 8.h,
             ),
-            AppText(
+            const AppText(
               text: '4',
               color: grey,
               fontSize: 14,
             ),
             SizedBox(
-              height: 8,
+              height: 8.h,
             ),
-            AppText(
+            const AppText(
               text: '2',
               color: grey,
               fontSize: 14,
             ),
             SizedBox(
-              height: 8,
+              height: 8.h,
             ),
-            AppText(
+            const AppText(
               text: '0',
               color: grey,
               fontSize: 14,

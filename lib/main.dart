@@ -8,6 +8,7 @@ import 'package:ecommerce/views/search_by_category.dart/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constants.dart' as constants;
 import 'constants.dart';
 import 'views/favorite/cubit.dart';
@@ -38,25 +39,30 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CartCubit()..getCartItems()),
         BlocProvider(create: (context) => SearchCubit()),
       ],
-      child: MaterialApp(
-          title: 'Ecommerce App',
-          debugShowCheckedModeBanner: false,
-          scaffoldMessengerKey: scaffoldKey,
-          navigatorKey: navigatorKey,
-          theme: ThemeData(
-            fontFamily: "Metropolis",
-            appBarTheme: const AppBarTheme(
-                backgroundColor: constants.lightScaffoldBackgroundColor,
-                elevation: 0.0,
-                iconTheme: IconThemeData(color: constants.black)),
-            colorScheme: ColorScheme.fromSwatch()
-                .copyWith(primary: constants.primaryAppColor),
-            scaffoldBackgroundColor: constants.lightScaffoldBackgroundColor,
-          ),
-          onGenerateRoute: onGenerate,
-          home: token != null || token != ""
-              ? const NavBarView()
-              : const RegisterView()),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: MaterialApp(
+            title: 'Ecommerce App',
+            debugShowCheckedModeBanner: false,
+            scaffoldMessengerKey: scaffoldKey,
+            navigatorKey: navigatorKey,
+            theme: ThemeData(
+              fontFamily: "Metropolis",
+              appBarTheme: const AppBarTheme(
+                  backgroundColor: constants.lightScaffoldBackgroundColor,
+                  elevation: 0.0,
+                  iconTheme: IconThemeData(color: constants.black)),
+              colorScheme: ColorScheme.fromSwatch()
+                  .copyWith(primary: constants.primaryAppColor),
+              scaffoldBackgroundColor: constants.lightScaffoldBackgroundColor,
+            ),
+            onGenerateRoute: onGenerate,
+            home: token != null || token != ""
+                ? const NavBarView()
+                : const RegisterView()),
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:ecommerce/views/search_by_category.dart/cubit.dart';
 import 'package:ecommerce/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/app_text.dart';
 import '../favorite/units/filter_bar.dart';
@@ -48,8 +49,8 @@ class _SearchByCategoryViewState extends State<SearchByCategoryView> {
           child: Column(
             children: [
               const FilterBar(),
-              const SizedBox(
-                height: 26,
+              SizedBox(
+                height: 26.h,
               ),
               BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {

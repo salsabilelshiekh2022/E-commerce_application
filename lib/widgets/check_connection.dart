@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/assets/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckConnection extends StatelessWidget {
   const CheckConnection({super.key});
@@ -11,13 +12,13 @@ class CheckConnection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 150,
+          SizedBox(
+            height: 150.h,
           ),
           Image.asset(
             AppAssets.noConnection,
             width: double.infinity - 100,
-            height: 400,
+            height: 400.h,
             fit: BoxFit.cover,
           ),
           const SizedBox(

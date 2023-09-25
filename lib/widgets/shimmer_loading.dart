@@ -1,5 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerLoading extends StatelessWidget {
@@ -16,8 +17,8 @@ class ShimmerLoading extends StatelessWidget {
             height: height * .32,
             child: const ShimmerWidget(),
           ),
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: 30.h,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 18),
@@ -55,17 +56,17 @@ class ShimmerLoading extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: 30.h,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 18),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: const SizedBox(
-                width: 71,
-                height: 20,
-                child: ShimmerWidget(),
+              child: SizedBox(
+                width: 71.w,
+                height: 20.h,
+                child: const ShimmerWidget(),
               ),
             ),
           ),
@@ -82,7 +83,7 @@ class ShimmerLoading extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: SizedBox(
-                        width: 150,
+                        width: 150.w,
                         height: height * .3,
                         child: const ShimmerWidget(),
                       ),
@@ -94,8 +95,8 @@ class ShimmerLoading extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: 30.h,
           )
         ],
       ),

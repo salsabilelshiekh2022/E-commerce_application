@@ -2,6 +2,7 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/router/router.dart';
 import 'package:ecommerce/views/adding_address/view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/app_text.dart';
 
@@ -12,9 +13,9 @@ class ShoppingAddressView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AppText(
+        title: AppText(
           text: 'Shipping Addresses',
-          fontSize: 18,
+          fontSize: 18.sp,
         ),
         leading: IconButton(
           icon: const Icon(
@@ -76,12 +77,12 @@ class ShoppingAddressItem extends StatelessWidget {
         color: white,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: const Padding(
-        padding: EdgeInsets.all(15),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppText(
@@ -95,21 +96,21 @@ class ShoppingAddressItem extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 7,
             ),
             SizedBox(
-              width: 235,
-              child: AppText(
+              width: 235.w,
+              child: const AppText(
                 text: '3 Newbridge Court Chino Hills, CA 91709, United States',
                 fontSize: 14,
                 maxLines: 2,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 3,
             ),
-            CheckBoxTile(
+            const CheckBoxTile(
               text: 'Use as the shipping address',
             )
           ],

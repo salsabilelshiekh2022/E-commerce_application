@@ -4,6 +4,7 @@ import 'package:ecommerce/widgets/app_button.dart';
 import 'package:ecommerce/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/app_text.dart';
 
@@ -53,8 +54,8 @@ class AddingAddressView extends StatelessWidget {
                             .requestFocus(cubit.addressFocusNode);
                       },
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 20.h,
                     ),
                     AppTextFormField(
                       validator: (value) {
@@ -98,8 +99,8 @@ class AddingAddressView extends StatelessWidget {
                       },
                       hintText: 'State/Province/Region',
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 20.h,
                     ),
                     AppTextFormField(
                       validator: (value) {
@@ -113,8 +114,8 @@ class AddingAddressView extends StatelessWidget {
                       },
                       hintText: 'Zip Code (Postal Code)',
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 20.h,
                     ),
                     AppTextFormField(
                       validator: (value) {
@@ -124,8 +125,8 @@ class AddingAddressView extends StatelessWidget {
                       textInputAction: TextInputAction.done,
                       hintText: 'Country',
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: 40.h,
                     ),
                     AppButton(
                       title: 'SAVE ADDRESS',
@@ -135,8 +136,8 @@ class AddingAddressView extends StatelessWidget {
                         if (cubit.formKey.currentState!.validate()) {}
                       },
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: 40.h,
                     ),
                   ],
                 ),

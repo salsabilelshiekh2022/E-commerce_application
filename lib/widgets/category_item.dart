@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants.dart';
 import 'app_text.dart';
@@ -37,8 +38,8 @@ class CategoryItem extends StatelessWidget {
             ),
             Image.network(
               image,
-              width: 171,
-              height: 100,
+              width: 171.w,
+              height: 100.h,
               fit: BoxFit.cover,
             )
           ],

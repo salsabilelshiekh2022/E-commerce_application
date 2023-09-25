@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constants.dart';
 import '../../widgets/header_of_list.dart';
@@ -61,15 +62,15 @@ class HomeBody extends StatelessWidget {
                         height: height * .32,
                         fit: BoxFit.cover,
                       ),
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        height: 30.h,
                       ),
                       const HeaderOfList(
                         title: 'Sale',
                         subTitle: 'Super Summer Sale',
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 18, top: 22),
+                        padding: EdgeInsets.only(left: 18.w, top: 22.h),
                         child: SizedBox(
                           height: height * .334,
                           child: ListView.builder(
@@ -87,15 +88,15 @@ class HomeBody extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        height: 30.h,
                       ),
                       const HeaderOfList(
                         title: 'New',
                         subTitle: "You've never seen it before!",
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 18, top: 22),
+                        padding: EdgeInsets.only(left: 18.w, top: 22.h),
                         child: SizedBox(
                           height: height * .334,
                           child: ListView.builder(
@@ -103,7 +104,7 @@ class HomeBody extends StatelessWidget {
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
                               return Padding(
-                                      padding: const EdgeInsets.only(right: 17),
+                                      padding: EdgeInsets.only(right: 17.w),
                                       child: ProductItem(
                                           product: cubit.newProducts[index]))
                                   .animate()
@@ -116,8 +117,8 @@ class HomeBody extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        height: 30.h,
                       )
                     ],
                   );

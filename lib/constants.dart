@@ -17,9 +17,6 @@ double getWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
 }
 
-const String registerUrl = 'https://student.valuxapps.com/api/register';
-const String loginUrl = 'https://student.valuxapps.com/api/login';
-
 final GlobalKey<ScaffoldMessengerState> scaffoldKey =
     GlobalKey<ScaffoldMessengerState>();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

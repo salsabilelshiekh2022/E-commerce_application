@@ -5,6 +5,7 @@ import 'package:ecommerce/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/app_text.dart';
 import '../../widgets/check_connection.dart';
@@ -64,8 +65,8 @@ class CartView extends StatelessWidget {
                                   cubit.totalCost != 0
                                       ? Column(
                                           children: [
-                                            const SizedBox(
-                                              height: 25,
+                                            SizedBox(
+                                              height: 25.h,
                                             ),
                                             const PromoCodeField(),
                                             const SizedBox(
@@ -89,8 +90,8 @@ class CartView extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(
-                                              height: 70,
+                                            SizedBox(
+                                              height: 70.h,
                                             ),
                                             const AppButton(title: 'CHECK OUT'),
                                           ],

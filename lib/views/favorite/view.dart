@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/router/router.dart';
 import '../../widgets/check_connection.dart';
@@ -132,20 +133,20 @@ class GridItem extends StatelessWidget {
         );
       },
       child: SizedBox(
-        width: 164,
-        height: 281,
+        width: 164.w,
+        height: 281.h,
         child: Column(
           children: [
             SizedBox(
-              height: 100,
+              height: 100.h,
               child: Stack(children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: FadeInImage.assetNetwork(
                     image: product.image!,
                     placeholder: 'assets/images/loading2.gif',
-                    height: 100,
-                    width: 148,
+                    height: 100.h,
+                    width: 148.w,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -153,8 +154,8 @@ class GridItem extends StatelessWidget {
                     ? Padding(
                         padding: const EdgeInsets.only(top: 8, left: 9),
                         child: Container(
-                          width: 40,
-                          height: 24,
+                          width: 40.w,
+                          height: 24.h,
                           decoration: BoxDecoration(
                               color: primaryAppColor,
                               borderRadius: BorderRadius.circular(29)),
@@ -168,11 +169,11 @@ class GridItem extends StatelessWidget {
                       )
                     : const SizedBox(),
                 Positioned(
-                  top: 65,
-                  left: 105,
+                  top: 65.h,
+                  left: 105.w,
                   child: Container(
-                    width: 36,
-                    height: 36,
+                    width: 36.w,
+                    height: 36.h,
                     decoration: BoxDecoration(
                         color: primaryAppColor,
                         borderRadius: BorderRadius.circular(18),

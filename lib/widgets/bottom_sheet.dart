@@ -1,6 +1,7 @@
 import 'package:ecommerce/views/setting/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants.dart';
 import '../core/validator/validator.dart';
@@ -30,10 +31,10 @@ class ShowBottomSheet extends StatelessWidget {
                     right: 16,
                     bottom: MediaQuery.of(context).viewInsets.bottom == 0
                         ? 16
-                        : 236,
+                        : 236.h,
                   ),
                   child: SizedBox(
-                    height: 472,
+                    height: 472.h,
                     child: Form(
                       key: cubit.formKey,
                       autovalidateMode: cubit.autovalidateMode,
@@ -41,12 +42,12 @@ class ShowBottomSheet extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            height: 50,
+                          SizedBox(
+                            height: 50.h,
                           ),
-                          const AppText(
+                          AppText(
                             text: 'Password Change',
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             color: black,
                           ),
                           const SizedBox(
@@ -120,8 +121,8 @@ class ShowBottomSheet extends StatelessWidget {
                               }
                             },
                           ),
-                          const SizedBox(
-                            height: 32,
+                          SizedBox(
+                            height: 32.h,
                           ),
                           state is ChangePasswordLoading
                               ? const LoadingButton()

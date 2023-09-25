@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_margin_widget/flutter_margin_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/rating_bar.dart';
 
@@ -55,7 +56,7 @@ class ProductView extends StatelessWidget {
                   Image.network(
                     product.image!,
                     height: height * .5,
-                    width: width,
+                    width: width.w,
                     fit: BoxFit.contain,
                   ).animate().fade(curve: Curves.easeInOut).scale().move(),
                   const SizedBox(
@@ -72,20 +73,20 @@ class ProductView extends StatelessWidget {
                             product: product,
                           ),
                         ),
-                        const SizedBox(
-                          height: 22,
+                        SizedBox(
+                          height: 22.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const AppText(
+                            AppText(
                               text: 'Amazon',
-                              fontSize: 24,
+                              fontSize: 24.sp,
                               color: black,
                             ),
                             AppText(
                               text: '\$${product.price}',
-                              fontSize: 24,
+                              fontSize: 24.sp,
                               color: black,
                             ),
                           ],
@@ -108,12 +109,12 @@ class ProductView extends StatelessWidget {
                             )
                           ],
                         ),
-                        const SizedBox(
-                          height: 16,
+                        SizedBox(
+                          height: 16.h,
                         ),
                         AppText(
                           text: product.description!,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           color: black,
                         ),
                         const SizedBox(
@@ -194,7 +195,7 @@ class ProductView extends StatelessWidget {
                           height: 12,
                         ),
                         SizedBox(
-                          height: 270,
+                          height: 275.h,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
                               itemCount: 5,
@@ -212,8 +213,8 @@ class ProductView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 120,
+                  SizedBox(
+                    height: 120.h,
                   ),
                 ],
               ),
@@ -224,8 +225,8 @@ class ProductView extends StatelessWidget {
                   height: height * .137,
                   width: width,
                   color: lightScaffoldBackgroundColor,
-                  padding: const EdgeInsets.only(
-                      top: 20, bottom: 34, left: 16, right: 16),
+                  padding: EdgeInsets.only(
+                      top: 20.h, bottom: 34.h, left: 16.w, right: 16.w),
                   child: BlocBuilder<CartCubit, CartState>(
                       builder: (context, state) {
                     if (state is CartLoading) {

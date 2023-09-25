@@ -1,6 +1,7 @@
 import 'package:ecommerce/views/cart/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants.dart';
 import '../../../core/router/router.dart';
@@ -100,8 +101,8 @@ class CartItem extends StatelessWidget {
                               });
                         },
                         child: Container(
-                          width: 36,
-                          height: 36,
+                          width: 36.w,
+                          height: 36.h,
                           decoration: BoxDecoration(
                               color: white,
                               borderRadius: BorderRadius.circular(18),
@@ -130,8 +131,8 @@ class CartItem extends StatelessWidget {
                         width: 16,
                       ),
                       Container(
-                        width: 36,
-                        height: 36,
+                        width: 36.w,
+                        height: 36.h,
                         decoration: BoxDecoration(
                             color: white,
                             borderRadius: BorderRadius.circular(18),
@@ -147,8 +148,8 @@ class CartItem extends StatelessWidget {
                           size: 18,
                         ),
                       ),
-                      const SizedBox(
-                        width: 40,
+                      SizedBox(
+                        width: 40.w,
                       ),
                       BlocBuilder<CartCubit, CartState>(
                         builder: (context, state) {

@@ -1,5 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/app_text.dart';
 import 'units/rating_section.dart';
@@ -12,8 +13,8 @@ class ReviewsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Container(
-        width: 128,
-        height: 36,
+        width: 128.w,
+        height: 36.h,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25), color: primaryAppColor),
         child: const Row(
@@ -51,30 +52,30 @@ class ReviewsView extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
-                RatingSection(),
+                const RatingSection(),
                 SizedBox(
-                  height: 33,
+                  height: 33.h,
                 ),
-                AppText(
+                const AppText(
                   text: '8 reviews',
                   fontSize: 24,
                   color: black,
                 ),
                 SizedBox(
-                  height: 28,
+                  height: 28.h,
                 ),
-                ReviewsList(),
+                const ReviewsList(),
               ],
             ),
           ),

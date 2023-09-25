@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants.dart';
 import 'app_text.dart';
@@ -16,7 +17,7 @@ class ProfileSection extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: 72,
+        height: 72.h,
         width: width,
         child: Column(
           children: [
@@ -29,7 +30,7 @@ class ProfileSection extends StatelessWidget {
                   children: [
                     AppText(
                       text: title,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: black,
                     ),
                     const SizedBox(
