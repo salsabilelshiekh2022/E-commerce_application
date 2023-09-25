@@ -40,7 +40,7 @@ This repository is still under development and I will continue to add more featu
 | <img src="screen_shot/15.jpg" width="400">     | <img src="screen_shot/16.jpg" width="400"> |
 | <img src="screen_shot/17.jpg" width="400">     | <img src="screen_shot/18.jpg" width="400"> |
 
-## 🎥 Video
+## 🎥 [Video](https://drive.google.com/file/d/1wNG3PG1jQGXtw2r2lSM72VqZe6WwuiRx/view?usp=sharing)
 <!---
 |Video                                          |
 |-----------------------------------------------|
